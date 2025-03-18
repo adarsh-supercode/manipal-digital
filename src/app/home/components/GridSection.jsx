@@ -66,7 +66,7 @@ const GridSection = () => {
       scrollTrigger: {
         trigger: grid,
         start: "top center",
-        end: "+=200%",
+        end: "bottom top",
         pin: grid.parentNode,
         scrub: 0.3,
         toggleActions: "play reverse play reverse",
