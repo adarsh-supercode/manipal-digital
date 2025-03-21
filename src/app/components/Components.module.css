@@ -1,0 +1,131 @@
+/* Button */
+
+/* primary button */
+.primaryButton{
+    display: flex;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color:var(--color-4);
+    border:1px solid var(--color-4);
+    border-radius:60px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; 
+    letter-spacing: 0.32px;
+}
+.buttonBlack{
+    color:var(--color-5);
+    border:1px solid var(--color-5);
+}
+
+
+
+/* Marquee styles*/
+.marqueeSlider {
+  position: relative;
+  background-color: #FFF;
+}
+
+.logoSliderWrapper {
+  position: absolute;
+  top: 0;
+  width: 100%; /* Cover the whole width to apply both gradients */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logoSliderWrapper::before,
+.logoSliderWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px; /* Adjust width of gradient */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logoSliderWrapper::before {
+  left: 0;
+  background: linear-gradient(90deg, #FFF 59.65%, rgba(255, 255, 255, 0.50) 96.87%);
+}
+
+.logoSliderWrapper::after {
+  right: 0;
+  background: linear-gradient(269deg, #FFF 59.65%, rgba(255, 255, 255, 0.50) 96.87%);
+}
+
+
+.lineBeforeAfter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 28px;
+  }
+  
+  .lineBeforeAfter::before,
+  .lineBeforeAfter::after {
+    content: "";
+    height: 0.8px;
+    background-color: var(--color-3);
+    margin: 0 16px;
+    width: 230px;
+    opacity: 0.6;
+  }
+  /* slider */
+  /* gsap slider */
+  .leadersPrincipleSection{
+    /* background-image:url('/assets/PrincipleSecbg.jpg'); */
+    padding-top:68px;
+}
+.leadersPrinciplebgVideo{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+}
+.principleCard{
+    display:flex !important;
+    gap:30px;
+    align-items:flex-end;
+    padding-top:30px;
+}
+.titleWrap{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    color:var(--color-4);
+    position:relative;
+    z-index:1;
+}
+.description{
+    max-width:691px;
+    width:100%;
+}
+.principlesSwiper {
+    width: 100%;
+}
+
+.principleCard {
+    color:var(--color-4);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 525px;
+    height: auto;
+    display: flex;
+    gap:30px;
+    align-items: flex-end;
+}
+
+.principleCard img {
+    border-radius: 4px;
+}
+
+.description {
+    padding: 20px;
+}

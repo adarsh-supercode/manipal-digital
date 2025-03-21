@@ -3,31 +3,13 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
 import styles from "../css/gridSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GridSection = () => {
   useEffect(() => {
-    // Initialize Lenis
-    const lenis = new Lenis({
-      duration: 1.2, // Adjust the smoothness
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ease out curve
-      smooth: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    // Sync Lenis with GSAP's ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
+    
 
     const grid = document.querySelector("[data-grid-fourth-v2]");
     const gridImages = grid.querySelectorAll(`.${styles.grid__img}`);
@@ -98,7 +80,7 @@ const GridSection = () => {
       );
 
     return () => {
-      lenis.destroy();
+      // lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -125,7 +107,7 @@ const GridSection = () => {
       </div>
 
       <div className={styles.bannerContent}>
-        <h1 className={`${styles.bannerText} heading-1`}>
+        <h1 className={`${styles.bannerText} heading-2`}>
           We are a Creative powerhouse for ambitious Brands
         </h1>
       </div>

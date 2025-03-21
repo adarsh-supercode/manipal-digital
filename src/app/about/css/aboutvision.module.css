@@ -1,0 +1,68 @@
+.titleWrap{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    align-items:center;
+}
+.AboutFutureVisionTitle{
+    max-width:570px;
+    width:100%;
+}
+.visionAnimationWrap{
+    position:relative;
+    height:1200px;
+}
+.animationSubimg{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+}
+.animationSubimg:nth-child(1){
+    max-width: 400px;
+    height: 250px;
+}
+.animationSubimg:nth-child(2){
+    max-width: 320px;
+    height: 200px;
+}
+.animationSubimg:nth-child(3){
+    max-width: 300px;
+    height: 200px;
+}
+.animationSubimg:nth-child(4){
+    max-width: 330px;
+    height: 220px;
+}
+.animationSubimg:nth-child(5){
+    max-width: 320px;
+    height: 200px;
+}
+.animationSubimg:nth-child(6){
+    max-width: 300px;
+    height: 200px;
+}
+.animationSubimg:nth-child(7){
+    max-width: 750px;
+    height: 400px;    
+  object-fit:cover;
+    z-index:1;
+}
+.animationTextWrap{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    z-index:2;
+
+}
+.animationTextWrap p{
+    font-size: 192px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 107%; 
+}

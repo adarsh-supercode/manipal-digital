@@ -1,0 +1,52 @@
+.headerNav{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    padding: 18px 0;
+}
+.headermenuList{
+    display:flex;
+    gap:64px;
+}
+.headermenuList li a{
+    color:var(--color-4);
+}
+.headerMenuWrap{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:center;
+}
+.dropdownbtn{
+    position:relative;
+}
+.dropdownbtn a{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.submenu {
+    position:absolute;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .submenu.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  .submenu.hide {
+    display: none;
+    opacity: 0;
+  }
+  .dropdownSvg {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .rotateSvg {
+    transform: rotate(-180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+  

@@ -1,0 +1,31 @@
+.videoConatainer {
+    position: relative;
+    width: 50vw; /* Starts smaller */
+    transition: width 0.3s ease-out;
+}
+
+.videoOverlayText {
+    padding: 48px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.videoWrap {
+    display: block;
+}
+
+.videoPlay {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.videoOverlayText h2 {
+    width: 100%;
+    max-width: 250px;
+}
+
+.overlaySubtext {
+    width: 100%;
+    max-width: 280px;
+}

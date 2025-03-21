@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    
+        .overlay {
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+    
+        .text {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2; /* Bring text above video */
+            pointer-events: none; /* Prevent overlap issues */
+        }
+    
+        .text-inner {
+            transform: translateY(30vw);
+            font-size: 2.5rem;
+            color: rgb(6, 6, 6);
+            text-align: center;
+        }
+    
+        .track {
+            height: 300vh;
+        }
+    
+        .gradient {
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    
+        .shape {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            mix-blend-mode: multiply;
+            background: black;
+            position: relative;
+            z-index: 2; /* Keep video below text */
+        }
+    
+        video {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Ensure proper centering */
+            width: 100%; /* Stretch to container */
+            height: 100%; /* Stretch to container */
+            object-fit: cover; /* Cover the area without distortion */
+            z-index: -1; /* Push video below shape */
+        }
+    
+        .shape .img {
+            width: 20rem;
+            height: 20rem;
+            transform: scale(0);
+        }
+    
+        .img svg {
+            width: 100%;
+            height: 100%;
+        }
+    
+        .img svg .hsc-img-path {
+            fill: white;
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="background-color: rgb(129, 127, 127); height: 100vh;"></div>
+
+<div class="track">
+    <div class="overlay">
+        <div class="text">
+            <div class="text-inner">
+                AI-Powered efficiency.<br>
+                Exponentially and responsibly.
+            </div>
+        </div>
+        <div class="shape">
+  
+            <div class="scale">
+                <div class="rotate">
+                    <div class="img">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="617" height="615" viewBox="0 0 617 615" fill="none">
+                            <path d="M308.5 0C290.745 218.264 218.973 289.802 0 307.5C218.973 325.197 290.744 396.737 308.5 615C326.255 396.737 398.027 325.198 617 307.5C398.027 289.803 326.256 218.264 308.5 0Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <video autoPlay muted loop preload="auto">
+                <source src="https://staging.supercode.in/testing1/background-video.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="gradient"></div>
+    </div>
+</div>
+<div style="background-color: rgb(129, 127, 127); height: 100vh;"></div>
+
+
+<!-- GSAP Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Shape scaling and rotation
+    gsap.to('.shape .img', {
+        scale: 30,
+        rotate: 0,
+        ease: 'expo.inOut',
+        scrollTrigger: {
+            trigger: '.track',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        }
+    });
+
+    // Text translation
+    gsap.to('.text-inner', {
+        y: 0,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+            trigger: '.track',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        }
+    });
+</script>
+
+</body>
+</html>

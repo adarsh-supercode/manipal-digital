@@ -1,0 +1,35 @@
+.aboutBannerSection{
+    background-image: url('/assets/about-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:var(--color-4);
+    
+}
+.bannerContentWrap{
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+    justify-content:flex-end;
+    max-width:1091px;
+    width:100%;
+    align-items:flex-end;
+}
+.bannerContentDesc{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+.bannerText{
+    max-width:358px;
+    width:100%;
+}
+.aboutbannerBtn{
+    display:flex;
+    gap:16px;
+    color:var(--color-4);
+}

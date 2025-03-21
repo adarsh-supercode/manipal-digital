@@ -1,0 +1,76 @@
+.FooterContainer{
+    background-image: url('/assets/footer-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top:76px;
+}
+.FooterMenuWrap{
+    display:flex;
+    justify-content:space-between;
+    padding-bottom:158px;
+    border-bottom:1px solid rgba(256,256,256,0.3); 
+}
+.contactWrap{
+    max-width:426px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    color:var(--color-4);
+}
+.contactLink{
+    display:flex;
+    align-items:center;
+    gap:34px;
+    color:var(--color-4);
+}
+.FooterlinkSets{
+    display:flex;
+    gap:115px;
+}
+.footermenuList{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.emailWrap{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+   
+}
+.mediaLinkWrap{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    color:var(--color-4);
+}
+.mediaLinks{
+    display:flex;
+    gap:16px;
+    color:var(--color-4)
+}
+.IconsWrap{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+.LinkClr{
+    color:var(--color-4);
+}
+.menuItem a{
+    color:var(--color-4);
+}
+.copyRightWrap{
+    display:flex;
+    justify-content:space-between;
+    padding:16px 0 40px;
+}
+.copyRightTexts{
+    display:flex;
+    gap:126px;
+}
+.bottomFootertext{
+    color:var(--color-4);
+}

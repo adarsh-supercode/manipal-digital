@@ -1,6 +1,7 @@
 import React from 'react';
 export default function FeaturedPosts({ posts }) {
   const { main_post, sub_posts } = posts || {};
+  console.log('posts: ', posts);
 
   return (
     <div>
