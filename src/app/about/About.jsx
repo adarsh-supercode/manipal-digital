@@ -7,16 +7,15 @@ import Principles from './components/Principles'
 import AboutFutureVision from './components/AboutFutureVision'
 
 export default function About({data}) {
-  const{leadership,}=data ||{}
-  console.log(data,"about")
+  const{leadership,banner,clients,purpose,legacyBuilt,culture}=data ||{}
   return (
     <div>
-        <Banner/>
-        <OurClients/>
-        <OurPurpose/>
+        <Banner banner={banner}/>
+        <OurClients clients={clients}/>
+        <OurPurpose purpose={purpose}/>
         <Leadership leadership={leadership}/>
-        <Principles/>
-        <AboutFutureVision/>
+        <Principles legacyBuilt={legacyBuilt}/>
+        <AboutFutureVision culture={culture}/>
     </div>
   )
 }

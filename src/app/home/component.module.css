@@ -1,0 +1,213 @@
+.modelNew{
+    /* position: absolute !important; */
+    top: 0;
+  
+    z-index:9
+}
+.modelNeCanvas{
+    position: relative;
+    top: 10%;
+}
+.modelNewWrap{
+    /* width: 50%; */
+    height: 90%;
+    width:500px;
+}
+.alignDiv{
+    position:relative;
+    display: flex;
+    gap:50px;
+    flex-direction:column;
+    width:100%;
+}
+.textContainer p {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    color: var(--color-8);
+    width: 100%;
+    height:90px;
+    overflow: hidden;
+  }
+  
+  .textContainer p span {
+    background-image: var(--color-8);
+    -webkit-background-clip: text;   
+    background-clip: text;          
+    color: transparent;         
+  }
+  
+@media(max-width:1600px){
+    .modelNeCanvas{
+        height: 80% !important;
+        width: 400px !important;
+    }
+}
+@media(max-width:991px){
+.modelNeCanvas{
+    height: 80% !important;
+    width: 300px !important;
+    top:17%;
+}
+}
+@media(max-width: 991px){
+    .modelNew{
+        position: static !important;
+        display: block !important;
+    }
+    .modelNeCanvas{
+        position: static;
+        left: unset;
+        top: unset;
+        width: 100% !important;
+        height: 400px !important;
+        pointer-events: none !important;
+    }
+    .modelNewWrap{
+        width: 100%;
+    }
+}
+
+
+
+
+/* behind section */
+.textWrap{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.modelWrapper{
+    position: relative;
+}
+  
+.model {
+    height: 100%;
+}
+.animateTextWrap{
+    position:relative;
+    /* z-index:999; */
+}
+
+
+@media(max-width:991px){
+    .animateTextWrap{
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: flex-end !important;
+    }
+    .textWrap{
+        max-width:500px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 80px;
+    }
+}
+
+.behindSecWrap{
+    display: flex;
+    justify-content:flex-end;
+    align-items:flex-start;
+    position: relative;
+    gap:50px;
+    padding-top: 500px;
+}
+.behindLogoSec{
+    width:40%;
+}
+.behindContentWrap{
+    width:60%;
+}
+.behindContent1{
+    height:100vh;
+    display: flex;
+    align-items: center;
+}
+.behindContent2{
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    position:relative;
+    z-index:99;
+}
+.modelNewWrap{
+    height:750px;
+}
+
+.iconContainer{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+} 
+  
+.iconContainer p{
+    width: 100%;
+    max-width: 320px;
+}
+
+.behindLogoSec{
+    position: relative;
+    left:42px;
+}
+
+.bannerContent{
+    display:flex;
+    justify-content:center;
+}
+  
+@media(max-width: 991px){
+    .animateTextWrap{
+        align-items: flex-start !important;
+    }
+    .behindSecWrap{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 300px;
+    }
+    .behindContent1{
+        height: 40vh;
+        margin-top: 10rem;
+        justify-content: center;
+    }
+    .behindContent2{
+        align-items: flex-start;
+        height: 100%;
+    }
+    .behindContentWrap{
+        width: 100%;
+        padding: 0 20px;
+    }
+    .behindLogoSecWrap{
+        display: none;
+    }
+    .textContainer p{
+        top: 50px;
+    }
+    .alignDiv{
+        gap: 36px;
+    }
+    .modelNewWrap{
+        height: fit-content;
+    }
+    .disableTouch {
+        pointer-events: none;
+    }
+    .iconContainer p{
+        max-width: 205px;
+    }
+}
+
+@media(max-width: 768px){
+    .behindContent1{
+        height: 40vh;
+        margin-top: 15rem;
+    }
+    .textWrap{
+        max-width:500px;
+        width: 100%;
+    }
+}

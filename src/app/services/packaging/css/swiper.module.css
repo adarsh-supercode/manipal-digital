@@ -1,0 +1,299 @@
+/* Video Background Container */
+.videoContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  padding: 100px 0;
+}
+
+.videoContainer video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none; 
+}
+
+.videoContainer .swiperContent {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: left;
+}
+
+.videoContainer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Slider Wrapper & Content  */
+.swiperContainer {
+  width: 100%;
+}
+
+.swiperContent h2 {
+  width: 100%;
+  max-width: 700px;
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.slideImage {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 18px;
+}
+
+.slideText {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ff6600;
+}
+
+/* Custom Swiper Buttons */
+.swiperButton {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.swiperButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.swiperButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.swiperButtonPrev {
+  left: -20px;
+  transform: translateY(-50%);
+}
+
+.swiperButtonNext {
+  right: -20px;
+  transform: translateY(-50%);
+}
+
+/* Flip Card Components */
+.flipCard {
+  background-color: transparent;
+  position: relative;
+  width: 100%;
+  height: 430px;
+  perspective: 1000px;
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Flip effect on hover */
+.flipCard:hover .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back Sides */
+.flipCardFront,
+.flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 18px;
+}
+
+.flipCardFront {
+  background-color: #f0f0f0;
+}
+
+.flipCardBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+.flipCardBackOverlay {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 100%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 18px;
+  position: absolute;
+}
+
+.flipText {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  max-width: 100%;
+  width: 90%;
+  position: absolute;
+  color: #000;
+}
+
+/* Card Bottom Overlay Gradient */
+.blackOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+  transform: rotateY(0deg);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  backface-visibility: hidden;
+  border-radius: 0 0 18px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-13);
+}
+
+.flipCard:hover .blackOverlay {
+  transform: rotateY(180deg);
+  opacity: 0;
+}
+
+/* :global(.swiper-slide-active) .flipCardInner {
+  transform: rotateY(180deg);
+}
+:global(.swiper-slide-active) .blackOverlay {
+  transform: rotateY(180deg);
+  opacity: 0;
+} */
+
+/* Arrow Navigation Buttons */
+.arrowContainer {
+  position: relative;
+  display: flex;
+  gap: 30px;
+}
+
+.arrowButton {
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  padding: 19px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+}
+
+.arrowLeft {
+  left: -4rem;
+  bottom: 11rem;
+}
+
+.arrowRight {
+  right: -4rem;
+  bottom: 11rem;
+}
+
+.arrow {
+  color: #ffffff;
+  transition: transform 0.4s ease;
+}
+
+.arrowButton:hover {
+  width: 120px;
+  border-radius: 40px;
+}
+
+.arrowButton:hover .arrow {
+  transform: translateX(-10px);
+}
+
+/* Swiper Progressbar Pagination (Mobile) */
+@media(max-width:768px){
+  .videoContainer{
+    padding: 60px 0;
+  }
+  .arrowContainer {
+    display: none;
+  }
+
+  .flipCard {
+    width: 100%;
+  }
+
+  .slider {
+    margin-top: 20px;
+  }
+
+  .swiper-pagination {
+    position: relative;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .swiper-pagination-progressbar-fill {
+    background: linear-gradient(90deg, #fff 0%, #d0d0d0 100%);
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease;
+    border-radius: 2px;
+  }
+
+}
+
+/*  Video Height Responsiveness */
+@media(max-width:1024px){
+  .videoContainer video {
+    height: 800px;
+  }
+
+}
+
+@media(max-width:475px){
+  .videoContainer video {
+    height: 700px;
+  }
+}

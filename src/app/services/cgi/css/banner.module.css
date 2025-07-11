@@ -1,0 +1,33 @@
+.bannerText{
+    display: flex
+;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    color: var(--color-4);
+    z-index: 2;
+}
+
+.cgiBanner{
+    position:relative;
+    height:100vh;
+}
+.cgiBanner video{
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bannerTextWrap{
+    display:flex;
+    align-items:center;
+    position:absolute;
+    top:0;
+    height:100%;
+    color:var(--color-4);
+}
+@media (max-width: 768px) {
+    .cgiBanner video{
+        object-fit: cover;
+    }
+}

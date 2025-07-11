@@ -1,0 +1,63 @@
+.textBlock{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.textBlockRight{
+    max-width: 525px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sectionWrapper .slideImage{
+    width: 100%;
+}
+
+.fashionBackground{
+    background: #FDEEF3;
+}
+
+.swiperWrapper {
+  position: relative;
+}
+
+.arrowContainer{
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    z-index: 10;
+}
+
+.arrowButton {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 19px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.arrow {
+    color: #ffffff;
+    transition: transform 0.4s ease;
+}
+
+@media(max-width: 991px){
+    .textBlock{
+        flex-direction: column;
+        gap: 16px;
+    }
+}

@@ -1,0 +1,83 @@
+.tabsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tab {
+  position: relative;
+  width: 410px;
+  padding: 40px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.mediaTab {
+  background-image: url('/assets/industries-media.jpg');
+}
+
+.fashionTab {
+  background-image: url('/assets/industries-fashion.jpg');
+}
+
+.fmcgTab {
+  background-image: url('/assets/industries-fmcg.jpg');
+}
+
+.tab:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.tabText {
+  position: relative;
+  z-index: 2;
+}
+
+@media(max-width: 1140px) {
+  .tabsWrapper {
+    display: flex;
+    overflow-x: scroll;
+  }
+  .tabsWrapper .tab {
+    flex: 0 0 60%;
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 768px) {
+  .tabsWrapper {
+    display: none;
+    overflow-x: scroll;
+    justify-content: flex-start;
+  }
+  .tabsWrapper::-webkit-scrollbar{
+    display: none;
+  }
+  .tabsWrapper .tab {
+    flex: 0 0 80%;
+    padding: 20px;
+    font-size: 16px;
+  }
+}

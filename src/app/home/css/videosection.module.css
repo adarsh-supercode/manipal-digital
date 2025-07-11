@@ -1,31 +1,54 @@
-.videoConatainer {
-    position: relative;
-    width: 50vw; /* Starts smaller */
-    transition: width 0.3s ease-out;
+.videoContainer {
+  width: 100%;
+  overflow: hidden;
+  /* height: 100vh; */
+  position: relative;
+  margin: 0 auto;
+}
+
+  
+.video {
+  width: 100%; /* Fit width on all screens */
+  height: 100vh; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure video covers the container */
 }
 
 .videoOverlayText {
-    padding: 48px;
-    height: 100%;
-    position: absolute;
-    top: 0;
+  padding: 48px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events:none;
+  @media (max-width:768px) {
+    padding: 22px;
 }
-
-.videoWrap {
-    display: block;
-}
-
-.videoPlay {
-    width: 100%;
-    border-radius: 16px;
 }
 
 .videoOverlayText h2 {
-    width: 100%;
-    max-width: 250px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
-
-.overlaySubtext {
-    width: 100%;
-    max-width: 280px;
+@media(max-width:768px){
+  .videoContainer {
+    height: unset;
+    transform: unset !important;
+    padding-top: 0;
+  }
+  .videoOverlayText img{
+    width: 40px;
+  }
+  .video{
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
 }

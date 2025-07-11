@@ -1,0 +1,13 @@
+.WhyShootContentWrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.WhyShootContentTitle{
+    max-width: 420px;
+    width:100%;
+}
+.WhyShootContentDesc{
+    max-width: 724px;
+    width:100%;
+}

@@ -1,29 +1,68 @@
-// app/components/LenisScroll.js
-'use client';  // This marks it as a client-side component
+'use client';
 
-import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Lenis from '@studio-freight/lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const LenisScroll = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function LenisScroll({ children }) {
+  const pathname = usePathname();
+
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.1, // Adjust the smoothness
-    });
+    let lenis;
+    let rafId;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    const init = () => {
+      lenis = new Lenis({
+        lerp: 0.08,
+        duration: 1.5,
+        smoothTouch: false,
+        wheelMultiplier: 0.6,
+        smooth: true,
+      });
 
-    requestAnimationFrame(raf);
+      function raf(time) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
 
-    // Clean up Lenis on unmount
-    return () => {
-      lenis.destroy();
+      rafId = requestAnimationFrame(raf);
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      ScrollTrigger.scrollerProxy(document.body, {
+        scrollTop(value) {
+          return arguments.length
+            ? lenis.scrollTo(value, { immediate: true })
+            : lenis.scroll;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+        pinType: document.body.style.transform ? 'transform' : 'fixed',
+      });
+
+      ScrollTrigger.refresh();
     };
-  }, []); // Runs only once on mount
 
-  return null; // This component does not render anything to the DOM
-};
+    // Run after next frame
+    requestAnimationFrame(init);
 
-export default LenisScroll;
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (lenis) lenis.destroy();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.clearMatchMedia();
+    };
+  }, [pathname]);
+
+  return <>{children}</>;
+}

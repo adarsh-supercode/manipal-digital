@@ -1,52 +1,331 @@
-.headerNav{
-    position: fixed;
-    z-index: 2;
-    width: 100%;
-    padding: 18px 0;
+.headerNav {
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  padding: 18px 0 ;
+  transition: all 0.5s ease; /* Smooth transition for hiding/showing the header */
+  height: 100px;
 }
-.headermenuList{
+.mobileMenu {
+  display:none;
+}
+.headerHidden {
+  top: -100px; /* Hide the header when scrolling down */
+}
+
+.headerActive {
+  background-color: var(--color-4);
+  top:0;
+  z-index:9999;
+}
+.menuDark svg rect{
+  fill: #000;
+}
+
+.headerActive .headermenuList li a {
+  color: var(--color-10) !important;
+}
+
+.headerActive .rotateSvg path ,.headerActive .dropdownbtn a .dropdownSvg  path {
+  fill: var(--color-10) !important;
+}
+.logo{
+  position:relative;
+  z-index:999999;
+}
+.headerActive .logo svg path {
+  /* stroke: var(--color-12) !important; */
+  fill: var(--color-12) !important;
+}
+.logoWhite svg path {
+  /* stroke: var(--color-10) !important; */
+  /* fill: var(--color-13) !important; */
+  stroke: transparent !important;
+}
+.commonHeader .headermenuList li a {
+  color: var(--color-10) !important;
+}
+.commonHeader .headerMenuWrap .headermenuList li a svg path {
+  fill: var(--color-10);
+}
+.commonHeader .logo svg mask path,.commonHeader .logo svg g path, .commonHeader .logo svg path  {
+  stroke: transparent !important;
+  /* fill: var(--color-10) !important; */
+}
+
+/* Add the rest of your styles as is... */
+
+
+.headermenuList {
+  display: flex;
+  gap: 64px;
+}
+
+.headermenuList li a {
+  color: var(--color-10);
+}
+
+.dropdownToggle{
+  display: flex;
+  gap: 5px;
+  color: var(--color-4) !important;
+  align-items: center;
+}
+.dropdownToggle svg{
+  margin-top: 2px;
+}
+.headerMenuWrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  z-index:2;
+}
+
+.dropdownbtn {
+  position: relative;
+}
+
+.dropdownbtn a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-4);
+  justify-content:space-between;
+}
+
+/* Submenu Styling */
+.submenu {
+  position: absolute;
+  top: 100%; 
+  left: 25%;
+  padding: 10px 50px 10px 30px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+}
+
+.submenu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);  pointer-events: auto;
+}
+
+.submenu.hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+}
+
+.submenuItem {
+  padding: 8px 20px;
+}
+
+.submenuItem a {
+  color: var(--color-4);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.submenuItem a:hover {
+  color: var(--color-2); /* Highlight color on hover */
+}
+
+/* Dropdown Arrow Rotation */
+.dropdownSvg {
+  margin-top: 2px;
+  transition: transform 0.3s ease;
+}
+
+.rotateSvg {
+  transform: rotate(-180deg);
+}
+.mobileheaderNav{
+  display:none;
+}
+/* .headerOverlay{
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 80%, rgba(255, 255, 255, 0) 100%);
+  transform: rotateY(0deg);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-13);
+}
+.headerActive .headerOverlay {
+  opacity:0;
+} */
+ .headerOverlay{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color:white;
+  transform: rotateY(0deg);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+ }
+ .LinkClrWhite{
+  color: var(--color-4) !important;
+ }
+ @media(max-width:1024px){
+  .headermenuList{
+    gap:35px;
+  }
+ }
+/* @media(max-width:991px){
+  .headermenuList{
+    gap:26px;
+  }
+} */
+@media(max-width: 1024px){
+  .logo svg{
+    max-width: 100px;
+  }
+  .headerOverlay{
+    height: 100%;
+  }
+  .headerMenuWrap{
+    width:200px;
+  }
+  .mobileheaderNav{
     display:flex;
-    gap:64px;
-}
-.headermenuList li a{
-    color:var(--color-4);
-}
-.headerMenuWrap{
+    padding-right:20px;
+    position:absolute;
+    right: 22px;
+    top: 33px;
+  }
+  .headermenuList{
+    display:none;
+  }
+  .navButton{
+    display:none!important;
+  }
+  .mobileHeader{
+    display:none;
+  }
+  .headerNav{
     display:flex;
     justify-content:space-between;
-    gap:30px;
     align-items:center;
-}
-.dropdownbtn{
-    position:relative;
-}
-.dropdownbtn a{
-    display:flex;
-    gap:8px;
-    align-items:center;
-}
-.submenu {
-    position:absolute;
-    display: none;
+    height: auto;
+    padding: 10px 0;
+  }
+  .mobileheaderNav{
+    right: 0;
+    top: 30px;
+    stroke: #000;
+  }
+  .fillClrbbk{
+    fill:black;
+  }
+  .mobileMenu {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 50px 30px;
+    position: fixed;
+    z-index: 999;
+    background-color: var(--color-13);
+    top: 0;
+    transform: translateX(-100px); /* hidden by default */
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    overflow-y: scroll;
   }
   
-  .submenu.show {
-    display: block;
+  .mobileMenu.active {
+    transform: translateX(0);  
     opacity: 1;
   }
   
-  .submenu.hide {
-    display: none;
-    opacity: 0;
+  .mobileheaderNav svg rect {
+    transition: transform 0.3s ease, fill 0.3s ease;
   }
-  .dropdownSvg {
-    transition: transform 0.3s ease-in-out;
+  .mobileheadermenuListWrap{
+    width:100%;
+  }
+  .mobileheadermenuList{
+    padding:58px 0;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .mobileheadermenuList li a{
+    color:var(--color-10);
+    width: 100%;
+    display: block;
+    padding: 12px 0;
+    font-size: 28px;
+  }
+  .mobileheadermenuList li a:hover {
+    background: #f2f2f2 radial-gradient(circle, transparent 1%, #f2f2f2 1%) center/15000%;
+  }
+  .mobileheadermenuList .dropdownbtn a{
+    color:var(--color-10);
+  }
+  .mobileheadermenuList .dropdownbtn a svg path{
+    fill:black;
+  }
+  .desktopSubMenu{
+    display:none !important;
+  }
+  .mobileSubMenu{
+    display:block !important;
+  }
+  .mobilemenuBtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius:4px !important;
+    background-color:black;
+    color:var(--color-13)  !important;
+  }
+  .mobilemenuBtn:hover{
+    background-color:transparent;
+    color:var(--color-10)  !important;
+    border: 1px solid var(--color-10) !important;
+  }
+  .hamburgerMenu svg{
+    stroke: #fff;
+  }
+  .menuOpen .hamburgerMenu svg {
+    stroke: #000;
+  }
+  .headerActive .hamburgerMenu svg{
+    stroke: #000;
   }
   
-  .rotateSvg {
-    transform: rotate(-180deg);
-    transition: transform 0.3s ease-in-out;
+}
+
+@media(max-width: 768px){
+  .mobileheadermenuList li a{
+    color:var(--color-10);
+    width: 100%;
+    display: block;
+    padding: 12px 0;
+    font-size: 20px;
   }
-  
+}

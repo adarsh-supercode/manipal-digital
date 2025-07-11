@@ -1,5 +1,5 @@
 .LeadershipSection{
-    padding-top:148px;
+    padding-top:100px;
 }
 .titleWrap{
     display:flex;
@@ -39,4 +39,12 @@
 }
 .leaderName{
     color:var(--color-3);
+}
+@media(max-width: 991px){
+    .LeadershipSection{
+        padding-top:90px;
+    }
+    .leadersWrap{
+        grid-template-columns:repeat(2,1fr);
+    }
 }

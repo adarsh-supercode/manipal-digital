@@ -5,11 +5,15 @@ import Footer from './Footer';
 const fetchData = async () => {
   try {
     // Fetch Footer Menu
-    const menuResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_MENU_URL}`);
+    const menuResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_MENU_URL}`, {
+      next: { revalidate: 60 },
+    });
     const menuData = await menuResponse.json();
 
     // Fetch General Settings
-    const settingsResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_GENERAL_SETTING_URL}`);
+    const settingsResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_GENERAL_SETTING_URL}`, {
+      next: { revalidate: 60 },
+    });
     const settingsData = await settingsResponse.json();
     return { menuData, settingsData };
   } catch (error) {
@@ -29,8 +33,9 @@ const FooterMain = () => {
       
 
       // Find Header Menu
-      const footerMenu = menuData.find(menuData => menuData.menu.name === 'Footer Menu');
-      const footerMenuTwo = menuData.find(menuData => menuData.menu.name === 'Footer menu two');
+      // const footerMenu = menuData.find(menuData => menuData.menu.name === 'Footer Menu');
+      const footerMenu = menuData.find(menu => menu.name === 'Footer Menu');
+      const footerMenuTwo = menuData.find(menu => menu.name === 'Footer menu two');
       
       if (footerMenu) {
         setfooterMenu(footerMenu.items);
@@ -54,6 +59,7 @@ const FooterMain = () => {
   return (
     <div>
       <Footer menu={footerMenu} generalSettings={generalSettings} menuTwo={footerMenuTwo}/>
+      
     </div>
   );
 };

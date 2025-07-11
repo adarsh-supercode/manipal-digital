@@ -1,11 +1,14 @@
+.aboutFutureVisionSection{
+    padding-top:120px;
+}
 .titleWrap{
     display:flex;
     flex-direction:column;
-    gap:16px;
+    gap:30px;
     align-items:center;
 }
 .AboutFutureVisionTitle{
-    max-width:570px;
+    max-width:728px;
     width:100%;
 }
 .visionAnimationWrap{
@@ -48,7 +51,7 @@
 .animationSubimg:nth-child(7){
     max-width: 750px;
     height: 400px;    
-  object-fit:cover;
+    object-fit:cover;
     z-index:1;
 }
 .animationTextWrap{
@@ -65,4 +68,66 @@
     font-style: normal;
     font-weight: 700;
     line-height: 107%; 
+    color:var(--color-3);
+}
+
+.desc,.subDesc{
+    width: 100%;
+    text-align: center;
+}
+.subDesc{
+    max-width: 924px;
+    margin-top: 25px !important;
+}
+.desc{
+    max-width: 657px;
+}
+.animationTextWrapMob{
+    display: none;
+}
+@media(max-width:1199px){
+    .animationTextWrap p{
+        font-size: 112px;
+    }
+}
+@media(max-width: 991px){
+    .aboutFutureVisionSection{
+        padding-top: 60px;
+    }
+    .animationTextWrap p{
+        font-size: 80px;
+    }
+    .visionAnimationWrap{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        height: auto !important;
+        padding: 60px 0 20px;
+    }
+
+    .visionAnimationWrap img:nth-child(3),
+    .visionAnimationWrap img:nth-child(6),
+    .visionAnimationWrap img:nth-child(7) {
+        grid-column: 1 / span 2;
+    }
+   
+    .animationTextWrap{
+        display: none;
+    }
+    .animationTextWrapMob{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 60px;
+    }
+    .animationTextWrapMob h3{
+        font-size: 48px;
+        font-weight: 700;
+    }
+    .animationSubimg{
+        max-width: 100% !important;
+        height: 100% !important;
+        position: static;
+        transform: unset;
+    }
 }

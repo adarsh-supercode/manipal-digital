@@ -1,0 +1,242 @@
+/* .cardStacking{
+    background-color: var(--color-10);
+} */
+.stackCard{
+    background-color: var(--color-10);
+    display: flex;
+    justify-content: space-between;
+    height:810px;
+}
+.WhatWeOfferWrapper {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .imagingWrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-10);
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  
+  .imagingWrapper.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 10;
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+  }
+  
+  
+  .toggleButton{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    border: 1px solid var(--color-4);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  .toggleButtonSvg{
+    position:absolute;
+  }
+  .toggleBtnWrapper {
+    position: absolute;
+    width: 90px;
+    height: 46px;
+    background-color: transparent;
+    border: 1px solid var(--color-4);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    top: 7%;
+    right: 8%;
+    padding: 5px;
+  }
+  
+  .toggleBtn {
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+  }
+  
+  .toggleBtn.toggled {
+    left: calc(100% - 40px);
+  }
+  .CompareSliderImg{
+
+  }
+  @keyframes rotate360 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotateAnimation {
+    animation: rotate360 5s linear infinite;
+    transform-origin: center;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .toggleImg{
+    width:60px !important;
+    height:60px;
+  }
+  
+  .toggleButton img{
+    border-radius: 50%;
+  }
+  .customHandle {
+      background-color: #FFF;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 60px;
+      position: relative;
+    }
+    
+    .customHandle::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 810px;
+      background-color: var(--color-4);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -9999;
+    }
+    
+    .imagingContentWrap{
+      color: var(--color-4);
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .imagingContentWrap .topContent{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .imagingContentWrap .topContent h2{
+      width: 100%;
+      max-width: 518px;
+    }
+  
+    .imagingContentWrap .bottomContent{
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      padding-bottom:100px;
+    }
+  
+    .imagingContentWrap .bottomContent p{
+      width: 100%;
+      max-width: 370px;
+    }
+    .imagingImageWrap {
+      position: relative;
+    }
+    .imagingImageWrap img{
+    max-width:750px !important;
+    width:100%;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.2; }
+      20% { opacity: 1; }
+      40% { opacity: 0.2; }
+      100% { opacity: 0.2; }
+    }
+    
+    .circle1 {
+      transition: fill 0.3s ease-in-out;
+      animation: fade 1.5s linear infinite;
+      animation-delay: 0s;
+    }
+    
+    .circle2 {
+      animation: fade 1.5s linear infinite;
+      animation-delay: 0.3s;
+    }
+    
+    .circle3 {
+      animation: fade 1.5s linear infinite;
+      animation-delay: 0.6s;
+    }
+    @media(max-width:1024px){
+      .stackCard{
+        height:630px;
+      }
+    .imagingContentWrap{
+      padding:80px 80px 80px;
+    }
+    .imagingImageWrap img{
+      height:auto;
+    }
+   
+    }
+    @media(max-width:768px){
+      .CompareSliderImg{
+        pointer-events: none;
+      }
+      .stackCard{
+        height:720px;
+      }
+      .imagingContentWrap{
+        padding: 80px 30px 0px;
+        justify-content:flex-start;
+      }
+      .imagingImageWrap{
+        position: absolute;
+        height: 400px;
+        bottom: 0;
+        pointer-events: none;
+      }
+      .imagingContentWrap .bottomContent{
+        gap:15px;
+      }
+      .imagingImageWrap{
+        width:100%;
+      }
+      .CompareSliderImg{
+        height:400px !important;
+        max-width:100%!important;
+      }
+      .imagingImageWrap img{
+        height:400px;
+        max-width:100%!important;
+        object-fit:cover;
+      }
+      .toggleImg{
+        width:60px !important;
+        height:60px !important;
+      }
+    }

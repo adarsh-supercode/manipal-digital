@@ -1,90 +1,3 @@
-// 'use client';
-
-// import { useEffect, useRef } from 'react';
-// import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import styles from '../css/shapezoom.module.css';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const ShapeZoom = () => {
-
-//   useEffect(() => {
-
-//     gsap.to(`.${styles.img}`, {
-//       scale: 30,
-//       rotate: 0,
-//       ease: 'expo.inOut',
-//       scrollTrigger: {
-//         trigger: `.${styles.track}`,
-//         start: 'top top',
-//         end: 'bottom top',
-//         pin: true,
-//         pinSpacing: true,
-//         scrub: true,
-//         markers:true,
-//       },
-//     });
-
-//     gsap.to(`.${styles.textInner}`, {
-//       y: 100,
-//       ease: 'power2.inOut',
-//       scrollTrigger: {
-//         trigger: `.${styles.track}`,
-//         start: 'top top',
-//         end: 'bottom top',
-//         scrub: true,
-//       },
-//     });
-//   }, []);
-
-//   return (
-//     <>
-//      <div className={styles.track1}>
-//      <div className={styles.track}>
-//         <div className={styles.overlay}>
-//           <div className={styles.text}>
-//             <div className={styles.textInner}>
-//               AI-Powered efficiency.<br />
-//               Exponentially and responsibly.
-//             </div>
-//           </div>
-//           <div className={styles.shape}>
-//             <div className={styles.scale}>
-//                 <div className={styles.img}>
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     width="617"
-//                     height="615"
-//                     viewBox="0 0 617 615"
-//                     fill="none"
-//                   >
-//                     <path
-//                       d="M308.5 0C290.745 218.264 218.973 289.802 0 307.5C218.973 325.197 290.744 396.737 308.5 615C326.255 396.737 398.027 325.198 617 307.5C398.027 289.803 326.256 218.264 308.5 0Z"
-//                       fill="white"
-//                     />
-//                   </svg>
-//                 </div>
-//             </div>
-//             <div className={styles.videoContainer}>
-//             <video autoPlay muted loop preload="auto">
-//                 <source
-//                     src="https://staging.supercode.in/testing1/background-video.mp4"
-//                     type="video/mp4"
-//                 />
-//                 </video>
-//             </div>
-//           </div>
-//           <div className={styles.gradient}></div>
-//         </div>
-//       </div>
-//      </div>
-//     </>
-//   );
-// };
-
-// export default ShapeZoom;
-
 "use client"
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
@@ -94,76 +7,107 @@ import styles from '../css/shapezoom.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function ShapeZoom() {
+export default function ShapeZoom({revealSec}) {
+  const {title , subTitle , revealTitle , revealSub, backgVid} = revealSec || {}
   useEffect(() => {
-    // GSAP and ScrollTrigger code
-
-
-
-    // Shape scaling and rotation
-    gsap.to(`.${styles.img}`, {
-      scale: 30,
-      rotate: 0,
-      ease: 'expo.inOut',
-      scrollTrigger: {
-        trigger: `.${styles.track}`,
-        start: 'top -=10%',
-        end: 'bottom top',
-        scrub: true,
-      },
+    if (!document.querySelector(`.${styles.track}`)) return;
+  
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: `.${styles.track}`,
+          start: 'top top',
+          end: '+=200%',
+          scrub: 3,
+          pin: true,
+          // markers:true,
+          pinSpacing: true,
+        },
+      });
+  
+      tl.set(
+        [`.${styles.starOne}`, `.${styles.starTwo}`, `.${styles.starThree}`, `.${styles.starFour}`],
+        { rotate: 0 }
+      );
+  
+      tl.to(`.${styles.img}`, { scale: 30, duration: 30, ease: 'expo.inOut' })
+        .to(`.${styles.textInner}`, { y: 0, opacity: 1, duration: 1.5 }, ">-=18.7")
+        .to(
+          [`.${styles.starOne}`, `.${styles.starTwo}`, `.${styles.starThree}`, `.${styles.starFour}`],
+          { rotate: 360, duration:5, ease: 'power2.inOut' },
+          "<"
+        );
     });
-
-    // Text translation
-    gsap.to(`.${styles.textInner}`, {
-      y: 0,
-      ease: 'power2.inOut',
-      scrollTrigger: {
-        trigger:`.${styles.track}`,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+  
+    return () => ctx.revert(); // Clean up GSAP when unmounting
   }, []);
-
+  
+  
   return (
     <div>
 
       <div className={styles.track}>
         <div className={styles.overlay}>
           <div className={styles.text}>
-          <div className={`${styles.textInner} d-flex flex-column gap-40`}>
-                <h2 className='heading-2'>              
-                   <span className={styles.color2}> AI-Powered </span>efficiency.
-                    <br />
-                    Exponentially and responsibly.</h2>
-              <p className='heading-7 color-1'>Our team works hand in hand, harnessing AI and the latest technologies to breathe life into your boldest visions, creating digital experiences that captivate audiences and deliver larger impact.</p>
+          <div className={`${styles.textInner} d-flex flex-column`}>
+               <div className={`${styles.textInnerContent} d-flex flex-column gap-30 align-items-center`}>
+               <h2 className='heading-2 color-1 heading-4-sm'>              
+                   <span className={styles.color2}></span>{revealTitle}</h2>
+              <p className='text-4 color-1 text-4-sm'>{revealSub}</p>
+               </div>
               <div className={styles.starTwo}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="61" height="62" viewBox="0 0 61 62" fill="none">
-                <path d="M23.5 0.9375C22.1475 17.5907 16.6803 23.049 0 24.3994C16.6803 25.7496 22.1474 31.208 23.5 47.8612C24.8525 31.208 30.3197 25.7497 47 24.3994C30.3197 23.0491 24.8526 17.5907 23.5 0.9375Z" fill="url(#paint0_linear_1547_5229)"/>
-                <path d="M46.5 32.8828C45.6655 43.1582 42.2921 46.5261 32 47.3593C42.2921 48.1924 45.6654 51.5603 46.5 61.8357C47.3345 51.5603 50.7079 48.1925 61 47.3593C50.7079 46.5261 47.3346 43.1582 46.5 32.8828Z" fill="url(#paint1_linear_1547_5229)"/>
-                <defs>
-                    <linearGradient id="paint0_linear_1547_5229" x1="23.5" y1="0.9375" x2="23.5" y2="47.8612" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F05A8C"/>
-                    <stop offset="1" stopColor="#2D348C"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="61" height="62" viewBox="0 0 61 62" fill="none">
+                  <path d="M24.2826 6.10937C24.1693 5.50517 22.8307 5.50518 22.7174 6.10937C20.8275 16.1923 16.2252 20.7899 6.12958 22.6786C5.52519 22.7917 5.52519 24.132 6.12959 24.2451C16.2252 26.1338 20.8274 30.7314 22.7174 40.8143C22.8307 41.4185 24.1693 41.4185 24.2826 40.8143C26.1725 30.7314 30.7748 26.1338 40.8704 24.2451C41.4748 24.132 41.4748 22.7917 40.8704 22.6786C30.7748 20.7899 26.1726 16.1923 24.2826 6.10937Z" fill="url(#paint0_linear_3107_13821)"/>
+                  <path d="M47.5361 39.0056C47.3564 38.4177 45.6437 38.4177 45.4639 39.0056C44.259 42.9473 42.0255 45.1794 38.0803 46.3843C37.4923 46.5638 37.4923 48.2797 38.0803 48.4593C42.0255 49.6641 44.2589 51.8963 45.4639 55.838C45.6436 56.4259 47.3563 56.4259 47.5361 55.838C48.741 51.8963 50.9745 49.6641 54.9197 48.4593C55.5077 48.2797 55.5077 46.5639 54.9197 46.3843C50.9745 45.1795 48.7411 42.9473 47.5361 39.0056Z" fill="url(#paint1_linear_3107_13821)"/>
+                  <defs>
+                    <linearGradient id="paint0_linear_3107_13821" x1="23.5" y1="0" x2="23.5" y2="46.9237" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#F05A8C"/>
+                      <stop offset="1" stopColor="#2D348C"/>
                     </linearGradient>
-                    <linearGradient id="paint1_linear_1547_5229" x1="46.5" y1="32.8828" x2="46.5" y2="61.8357" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F05A8C"/>
-                    <stop offset="1" stopColor="#2D348C"/>
+                    <linearGradient id="paint1_linear_3107_13821" x1="46.5" y1="32.9453" x2="46.5" y2="61.8982" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#F05A8C"/>
+                      <stop offset="1" stopColor="#2D348C"/>
                     </linearGradient>
-                </defs>
+                  </defs>
                 </svg>
               </div>
-              <div className={styles.starOne}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="71" height="72" viewBox="0 0 71 72" fill="none">
-                <path d="M35.5 0.304688C33.4569 25.4617 25.1979 33.7072 0 35.7471C25.1979 37.7868 33.4568 46.0324 35.5 71.1894C37.5431 46.0324 45.8021 37.787 71 35.7471C45.8021 33.7073 37.5432 25.4617 35.5 0.304688Z" fill="url(#paint0_linear_1547_5236)"/>
+              <div className={styles.starFour}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="83" height="84" viewBox="0 0 83 84" fill="none">
+                <path d="M32.6696 6.43123C32.5774 5.82346 31.3734 5.82346 31.2813 6.43124C28.854 22.4394 22.1693 29.1161 6.13904 31.5414C5.53108 31.6334 5.53107 32.8386 6.13904 32.9306C22.1692 35.3558 28.8539 42.0326 31.2812 58.0408C31.3734 58.6485 32.5774 58.6485 32.6696 58.0408C35.0969 42.0326 41.7816 35.3559 57.8118 32.9306C58.4197 32.8386 58.4197 31.6334 57.8118 31.5414C41.7816 29.1162 35.097 22.4395 32.6696 6.43123Z" fill="url(#paint0_linear_3107_13824)"/>
+                <path d="M64.1212 49.8774C63.9903 49.2768 62.5468 49.2768 62.4159 49.8774C60.7862 57.3562 57.1429 60.9963 49.6554 62.6252C49.0546 62.7559 49.0546 64.2015 49.6554 64.3322C57.1429 65.9611 60.7862 69.6012 62.4159 77.0801C62.5468 77.6807 63.9903 77.6807 64.1212 77.0801C65.7509 69.6012 69.3942 65.9612 76.8817 64.3322C77.4825 64.2015 77.4825 62.756 76.8817 62.6252C69.3942 60.9963 65.751 57.3562 64.1212 49.8774Z" fill="url(#paint1_linear_3107_13824)"/>
                 <defs>
-                    <linearGradient id="paint0_linear_1547_5236" x1="36" y1="-2" x2="35.5" y2="71.1894" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="paint0_linear_3107_13824" x1="31.9754" y1="0.3125" x2="31.9754" y2="64.1595" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#F05A8C"/>
                     <stop offset="1" stopColor="#2D348C"/>
-                    </linearGradient>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_3107_13824" x1="63.2686" y1="43.7812" x2="63.2686" y2="83.1762" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F05A8C"/>
+                    <stop offset="1" stopColor="#2D348C"/>
+                  </linearGradient>
                 </defs>
-                </svg>
+              </svg>
+              </div>
+              <div className={styles.starOne}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
+                <path d="M27.0351 0.973033C26.7994 -0.10807 24.2006 -0.108065 23.965 0.973039C21.0324 14.4259 14.4779 20.9746 1.00945 23.9057C-0.0720133 24.1411 -0.0720084 26.7436 1.00946 26.979C14.4778 29.9101 21.0323 36.4588 23.9649 49.9117C24.2006 50.9928 26.7994 50.9928 27.035 49.9117C29.9676 36.4589 36.5221 29.9102 49.9905 26.979C51.072 26.7436 51.072 24.1412 49.9905 23.9058C36.5222 20.9747 29.9677 14.4259 27.0351 0.973033Z" fill="url(#paint0_linear_3107_13828)"/>
+                <defs>
+                  <linearGradient id="paint0_linear_3107_13828" x1="26" y1="-12.3047" x2="25.5" y2="60.8847" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F05A8C"/>
+                    <stop offset="1" stopColor="#2D348C"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              </div>
+              <div className={styles.starThree}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37" fill="none">
+                <path d="M19.2826 0.929681C19.1693 0.325486 17.8307 0.325488 17.7174 0.929684C15.8275 11.0126 11.2252 15.6102 1.12958 17.4989C0.525187 17.612 0.525192 18.9523 1.12959 19.0654C11.2252 20.9541 15.8274 25.5517 17.7174 35.6346C17.8307 36.2388 19.1693 36.2388 19.2826 35.6346C21.1725 25.5517 25.7748 20.9541 35.8704 19.0654C36.4748 18.9523 36.4748 17.612 35.8704 17.4989C25.7748 15.6103 21.1726 11.0126 19.2826 0.929681Z" fill="url(#paint0_linear_3107_13827)"/>
+                <defs>
+                  <linearGradient id="paint0_linear_3107_13827" x1="18.5" y1="-5.17969" x2="18.5" y2="41.744" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F05A8C"/>
+                    <stop offset="1" stopColor="#2D348C"/>
+                  </linearGradient>
+                </defs>
+              </svg>
               </div>
             </div>
           </div>
@@ -171,19 +115,23 @@ export default function ShapeZoom() {
             <div className={styles.scale}>
               <div className={styles.rotate}>
                 <div className={styles.img}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="617" height="615" viewBox="0 0 617 615" fill="none">
-                    <path d="M308.5 0C290.745 218.264 218.973 289.802 0 307.5C218.973 325.197 290.744 396.737 308.5 615C326.255 396.737 398.027 325.198 617 307.5C398.027 289.803 326.256 218.264 308.5 0Z" fill="white" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="722" height="686" viewBox="0 0 722 686" fill="none">
+                <path d="M4.40164 346.123C210.787 393.307 323.073 566.975 351.642 681.562C352.964 686.864 361.575 687.092 363.1 681.844C416.478 498.233 544.363 391.382 717.178 346.02C722.443 344.638 722.309 336.484 717.005 335.261C493.894 283.837 393.717 108.734 362.877 4.86867C361.263 -0.568811 351.162 -0.252211 349.844 5.26451C318.201 137.654 190.725 290.775 4.35756 334.217C-1.16944 335.505 -1.13078 344.858 4.40164 346.123Z" fill="white"/>
+              </svg>
                 </div>
               </div>
             </div>
-
+            <video autoPlay muted loop playsInline preload="auto">
+              <source src={backgVid.url} type="video/mp4" />
+            </video>
+            <div className={`${styles.overlayTextContainer} d-flex flex-column gap-20`}>
+            <p className='heading-4 color-13 heading-5-md text-1-sm'>{subTitle}</p>
+              <h2 className={`${styles.overlayText} heading-5 color-13 heading-2-md heading-2-sm`}>{title}</h2>
+          </div>
           </div>
           <div className={styles.gradient}></div>
         </div>
-        {/* <video autoPlay muted loop preload="auto">
-              <source src="https://staging.supercode.in/testing1/background-video.mp4" type="video/mp4" />
-            </video> */}
+        
       </div>
 
     </div>

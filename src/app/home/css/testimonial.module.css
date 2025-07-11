@@ -1,0 +1,149 @@
+.testimonialContent{
+    display: flex;
+    justify-content: space-between;
+    gap:20px;
+    align-items:flex-start;
+    padding: 160px 105px 120px;
+    position:relative;
+}
+.content h2{
+    width: 100%;
+    max-width: 512px;
+}
+.quotation{
+    position:absolute;
+    top:80px;
+    left:100px;
+    @media (max-width:768px){
+    display: none;
+    }
+}
+.companyName{
+    max-width:400px;
+    width:100%;
+    color: #2D348C; 
+}
+.aboutContent{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    max-width:511px;
+    width:100%;
+}
+.testimonialSlider :global(.swiper-button-next){
+    color: #2D348C; 
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    border:1px solid var(--color-5);
+    left: 12rem;
+    bottom: 60px;
+    top: unset;
+    transition: all 0.3s;
+    padding:0 5px;
+}
+.testimonialSlider :global(.swiper-button-next)::after{
+    content:url("/assets/nextArrow.svg");
+    font-size:0px;
+}
+.testimonialSlider :global(.swiper-button-next):hover{
+ justify-content:flex-end;
+ width:80px;
+ border-radius:20px;
+ transition:all 0.3s;
+}
+.testimonialSlider :global(.swiper-button-prev){
+    color: #2D348C; 
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    border:1px solid var(--color-5);
+    align-items: center;
+    position:absolute;
+    left: 8rem;
+    bottom: 60px;
+    top: unset;
+    padding:0 5px;
+    transition:all 0.3s;
+}
+.testimonialSlider :global(.swiper-button-prev)::after{
+    content:url("/assets/prevArrow.svg");
+    font-size:0px;
+}
+.testimonialSlider :global(.swiper-button-prev):hover{
+    justify-content:flex-start;
+    width:80px;
+    border-radius:20px;
+    transition:all 0.3s;
+    left:6rem;
+   }
+@media(max-width:768px){
+    .quotation{
+        top:20px;
+        left:0px;
+    } 
+.quotation svg{
+    width:60px;
+   
+}
+.testimonialContent{
+    flex-direction:column;
+    padding: 60px 0 100px !important;
+}
+.testimonialContent.padding-bottom-xl{
+    padding-bottom: 100px;
+}
+.testimonialSlider :global(.swiper-button-next){
+    left:50%;
+    bottom:30px;
+}
+.testimonialSlider :global(.swiper-button-prev){
+    left:40%;
+    bottom:30px;
+}
+}
+@media(max-width:475px){
+    .testimonialSlider :global(.swiper-button-next){
+        left:54%;
+        bottom:30px;
+    }
+    .testimonialSlider :global(.swiper-button-prev){
+        left:40%;
+        bottom:30px;
+    }
+    .testimonialSlider :global(.swiper-button-prev):hover{
+  
+        transition:all 0.3s;
+        left:5rem;
+       }
+}
+@media(max-width:375px){
+    .testimonialSlider :global(.swiper-button-next){
+        left:55%;
+        bottom:30px;
+    }
+    .testimonialSlider :global(.swiper-button-prev){
+        left:39%;
+        bottom:30px;
+    }
+    .testimonialSlider :global(.swiper-button-prev):hover{
+  
+        transition:all 0.3s;
+        left:4rem;
+       }
+}
+@media(max-width:320px){
+    .testimonialSlider :global(.swiper-button-prev):hover{
+  
+        transition:all 0.3s;
+        left:3rem;
+       }
+}

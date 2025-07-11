@@ -1,0 +1,65 @@
+/* CSS for custom mask shape */
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-height: 770px;
+  }
+  
+
+  .banner__background,
+  .banner__maskedImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .banner__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .bannerContent {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%); 
+    z-index: 10;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin-left: 76px;
+}
+
+.headingWrap{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  color:var(--color-4);
+  pointer-events:none;
+}
+
+.ImagingWrap canvas{
+width: 100% !important;
+object-fit: cover;
+height: 100% !important;
+}
+
+@media(max-width: 1024px){
+  .headingWrap{
+    top: unset;
+    bottom: 10%;
+  }
+  .headingWrap h1{
+    font-size: 40px;
+  }
+}

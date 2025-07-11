@@ -1,0 +1,118 @@
+.WhatWeOfferWrapper{
+    background-color: var(--color-10);
+
+}
+
+.imagingWrapper{
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 768px){
+        flex-direction: column;
+      
+    }
+}
+
+.imagingImageWrap{
+  position: relative;
+  
+}
+.toggleButton{
+  position: absolute;
+  right: 8%;
+  top: 7%;
+  border: 1px solid var(--color-4);
+  border-radius: 50%;
+  cursor: pointer;
+
+}
+.toggleBtnWrapper {
+  position: absolute;
+  width: 90px;
+  height: 46px;
+  background-color: transparent;
+  border: 1px solid var(--color-4);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  top: 7%;
+  right: 8%;
+  padding: 5px;
+}
+
+.toggleBtn {
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: left 0.3s ease;
+}
+
+.toggleBtn.toggled {
+  left: calc(100% - 40px);
+}
+
+
+.toggleButton img{
+  border-radius: 50%;
+}
+.customHandle {
+    background-color: #FFF;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 60px;
+    position: relative;
+  }
+  
+  .customHandle::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 810px;
+    background-color: var(--color-4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -9999;
+  }
+  
+  .imagingContentWrap{
+    color: var(--color-4);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width:768px){
+      padding: 40px;
+      
+    }
+  }
+
+  .imagingContentWrap .topContent{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .imagingContentWrap .topContent h2{
+    width: 100%;
+    max-width: 518px;
+  }
+
+  .imagingContentWrap .bottomContent{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .imagingContentWrap .bottomContent p{
+    width: 100%;
+    max-width: 370px;
+  }

@@ -1,0 +1,94 @@
+.ContentMainwrap{
+    padding:120px 200px;
+}
+.privacyContentWrap{
+    padding:60px 0
+}
+.privacyContent p{
+    font-family: var(--primary-font);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    padding-bottom:20px !important;
+}
+.privacyContent h2{
+    font-family: var(--primary-font-medium);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+    padding-bottom:20px !important;
+}
+.privacyContent h3{
+    font-family: var(--primary-font-bold);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    padding-bottom:20px !important;
+}
+
+.privacyContent :global(.wp-block-list) li{
+    font-family: var(--primary-font);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    padding:0 0 20px 15px  !important;
+    position:relative;
+    
+}
+.privacyContent :global(.wp-block-list) li:before{
+    content:".";
+    font-size:60px;
+    position:absolute;
+    top:-20px;
+    left:-15px;
+}
+.privacyContent :global(.wp-block-list) li :global(.wp-block-list){
+    padding-top:20px;
+}
+.privacyContent :global(.wp-block-list) li :global(.wp-block-list) li{
+
+
+    /* list-style-type:square !important; */
+}
+.privacyContent :global(.wp-block-list) li :global(.wp-block-list) li:before{
+
+    content:" " !important;
+    /* list-style-type:square !important; */
+}
+.privacyContent :global(.wp-block-list) li :global(.wp-block-list) li :global(.wp-block-list) li{
+
+    list-style-type:numeric !important;
+}
+.privacyContent h4{
+    font-family: var(--primary-font-medium);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    padding-bottom:20px !important;
+}
+.privacyContent:global(.wp-block-list) li{
+    font-family: var(--primary-font-medium);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+      padding-bottom:20px !important;
+}
+@media(max-width:1024px){
+    .ContentMainwrap{
+        padding:120px 120px;
+    }
+    .privacyContent h2{
+        font-size: 18px;
+    }
+}
+@media(max-width:768px){
+    .ContentMainwrap{
+        padding:120px 0px;
+    }
+}

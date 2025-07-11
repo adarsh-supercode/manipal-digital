@@ -5,141 +5,155 @@ import PrimaryButton from '@/app/components/Buttons/PrimaryButton'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Link from 'next/link'
+import { useMediaQuery } from 'usehooks-ts';
 
 gsap.registerPlugin(ScrollTrigger)
 
-const cardData = [
-  {
-    id: 1,
-    title: 'Packaging',
-    description: 'Bringing together our technical expertise and advanced technology, we transform your concept design into flawless package artwork, turning your vision to life.',
-    buttonLabel: 'Know more',
-    buttonLink: '#',
-    image: '/assets/featured.jpg',
-    projectName: 'Project name',
-    featuredText: 'Featured',
-  },
-  {
-    id: 2,
-    title: 'Branding',
-    description: 'Creating a cohesive brand identity that resonates with your target audience and stands out in the market.',
-    buttonLabel: 'Learn more',
-    buttonLink: '#',
-    image: '/assets/featured.jpg',
-    projectName: 'Brand name',
-    featuredText: 'Featured',
-  },
-  {
-    id: 3,
-    title: 'Branding',
-    description: 'Creating a cohesive brand identity that resonates with your target audience and stands out in the market.',
-    buttonLabel: 'Learn more',
-    buttonLink: '#',
-    image: '/assets/featured.jpg',
-    projectName: 'Brand name',
-    featuredText: 'Featured',
-  },
-  {
-    id: 4,
-    title: 'Branding',
-    description: 'Creating a cohesive brand identity that resonates with your target audience and stands out in the market.',
-    buttonLabel: 'Learn more',
-    buttonLink: '#',
-    image: '/assets/featured.jpg',
-    projectName: 'Brand name',
-    featuredText: 'Featured',
-  }
-]
+export default function CardStack({services}) {
+  const {subTitle, title , servicesSec} = services || {}
+  const isMobile = useMediaQuery('(max-width: 991px)');
 
-export default function CardStack() {
   const sectionRef = useRef()
   const cardRefs = useRef([])
+  const descRef = useRef([])
+  const headingRef = useRef([])
+  const countRef = useRef([])
+  const buttonRef = useRef([])
+  
   useEffect(() => {
-    if (sectionRef.current) {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=350%", // Increased scroll area
-          scrub: 1, // Smooth scrubbing
-          pin: true,
-          pinSpacing:false,
-          markers: true, // Debug markers
-        },
-      });
-  
-      cardRefs.current.forEach((card, index) => {
-        if (card) {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: card,
-              start: "top +=10%", 
-              end: "+=50%", 
-              scrub: 1,
-            },
-          });
-  
-          tl.fromTo(
-            card,
-            { y: 300 * (index + 1), scale: 1,  },
-            {
-              y: 0,
-              duration: 0.1 + index * 0.2, // Add delay based on index
-              ease: 'power2.out',
-            }
-          );
+    if (isMobile) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      const cards = cardRefs.current;
+      const desc = descRef.current;
+      const heading = headingRef.current;
+      const count = countRef.current;
+      const button = buttonRef.current;
+      const cardHeight = cards[0].offsetHeight;
+      const gap = -50;
+      const totalCards = cards.length;
+      const scrollHeight = (cardHeight + gap) * (totalCards - 1) * 5;  
+
+      cards.forEach((card, i) => {
+        gsap.set(card, {
+          y: i * (cardHeight + gap),
+          scale: 1,
+          zIndex: i,
+          backgroundColor: '#FCDEE8',
+          color: "#2D348C"
+        });
+        if (i === 0) {
+          card.style.backgroundColor = '#2D348C'; 
         }
       });
-    }
-  }, []);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: scrollHeight,
+          scrub: true,
+          pin: true,
+        },
+      });
+
+      let delayPerCard = 5.5; 
+
+      cards.forEach((card, i) => {
+        for (let j = i + 1; j < totalCards; j++) {
+          const step = (i + 1) * delayPerCard;
+
+          tl.to(cards[j], {
+            y: (j - i - 1) * (cardHeight + gap),
+            ease: 'none',
+            onUpdate: () => {
+              const currentY = gsap.getProperty(cards[j], "y");
+              if (currentY < 40) {
+                gsap.set(cards[j], { backgroundColor: '#2D348C', color: '#FCDEE8' });
+                gsap.set(desc[j], { color: '#F8F8F8' });
+                gsap.set(heading[j], { color: '#F8F8F8' });
+                gsap.set(count[j], { color: '#F8F8F8' });
+                gsap.set(button[j], { color: '#F8F8F8', backgroundColor: '', border: "1px solid #F8F8F8" });
+              } else {
+                gsap.set(cards[j], { backgroundColor: '#FCDEE8', color: '#2D348C' });
+                gsap.set(desc[j], { color: '#2D348C' });
+                gsap.set(heading[j], { color: '#2D348C' });
+                gsap.set(count[j], { color: '#2D348C' });
+                gsap.set(button[j], { color: '#2D348C', backgroundColor: '', border: "1px solid #2D348C" });
+              }
+            },
+          }, step);
+
+          if (j === i + 1) {
+            tl.to(cards[i], {
+              scale: 0.95,
+              ease: 'none',
+            }, step);
+          }
+        }
+      });
+
+      tl.to({}, { duration: 10 }); 
+    }, sectionRef);
   
+    return () => {
+      ctx.revert();
+    }
+  }, [isMobile]); 
 
   return (
-    <div ref={sectionRef} className={`${styles.cardWrapper} container`}>
-      <div className='row'>
-        <div className='col-lg-6 d-flex gap-10 flex-column'>
-          <p className='text-4'>WHAT WE OFFER</p>
-          <h2 className='heading-3 color-3'>Capabilities that fuel your business growth</h2>
-        </div>
-      </div>
-
-     <div>
-     <div className={`${styles.cardStackContainer}`}>
-        {cardData.map((card, index) => (
-          <div
-            key={card.id}
-            ref={(el) => (cardRefs.current[index] = el)}
-            className={`${styles.cardStackWrapper} ${styles[`cardStackWrapper-${index}`]} d-flex justify-content-between`}
-          >
-            {/* Left Section */}
-            <div>
-              <div className='d-flex flex-column align-items-start'>
-                <h2 className='heading-2 color-1'>{card.title}</h2>
-                <p className='text-1'>{card.description}</p>
-                <PrimaryButton href={card.buttonLink} label={card.buttonLabel} />
-              </div>
-              <div>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-              </div>
-            </div>
-
-            {/* Right Section */}
-            <div className="d-flex flex-column gap-10">
-              <div className='d-flex justify-content-between'>
-                <p className='text-1 color-1'>{card.featuredText}</p>
-                <p className='text-1 color-1'>{card.projectName}</p>
-              </div>
-              <Image
-                src={card.image}
-                width={430}
-                height={255}
-                alt={card.title}
-              />
-            </div>
+    <div className='padding-bottom'>
+      <section ref={sectionRef} className={`${styles.cardSection}`} id="services">
+        <div className='container'>
+          <div className={styles.mainText}>
+            <p className='text-6 text-5-sm'>{title}</p>
+            <h2 className='heading-3 color-3 heading-4-sm'>{subTitle}</h2>
           </div>
-        ))}
-      </div>
-     </div>
+          <div className={`${styles.cardStackContainer}`}>
+            {servicesSec?.map((card, index) => (
+              <Link  key={index} href={card.link.url} >
+                <div
+                  ref={(el) => (cardRefs.current[index] = el)}
+                  className={`${styles.cardStackWrapper} ${styles[`cardStackWrapper-${index}`]}`}
+                  data-cursor="bigCursor"
+                >
+                  <div className={styles.textMainwrap}>
+                    <div className={styles.titleWrap}>
+                      <h2 className='heading-2 heading-4-sm' ref={(el) => (headingRef.current[index] = el)}>{card.title}</h2>
+                      <div className={styles.cardDescWrap}>
+                        <p className={`${styles.description} text-4`} ref={(el) => (descRef.current[index] = el)}>
+                          {card.description}
+                        </p>
+                        <div ref={(el) => (buttonRef.current[index] = el)} className={styles.lightButton}>
+                          <span className={styles.cbBtnCtaBorder}></span>
+                          <span data-text={card.buttonLabel}>{card.link.title}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <img
+                        src={card.thumbnail.url}
+                        width={430}
+                        height={255}
+                        alt={card.thumbnail.alt}
+                        className={styles.projectImg}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.cardCountWrap}>
+                    <div>
+                      <span className={`${styles.cardCount} opacity-01`} ref={(el) => (countRef.current[index] = el)}>{String(index + 1).padStart(2, '0')}</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

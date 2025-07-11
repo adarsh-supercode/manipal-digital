@@ -1,0 +1,56 @@
+.contactSec{
+    padding:140px 0;
+}
+.contactTitleWrap{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+   
+}
+.contactWrap{
+    display:flex;
+    gap:170px;
+}
+.mailToWrap{
+    display:flex;
+    gap:8px;
+}
+.leftWrap{
+    display:flex;
+    flex-direction:column;
+    gap:300px;
+    max-width:453px;
+    width:100%;
+}
+.emailWrap{
+    display:flex;
+    gap:4px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:center;
+    color:var(--color-5);
+}
+.emailWrap a{
+    color:var(--color-5);
+}
+@media(max-width:1024px){
+    .contactWrap{
+        gap:10px;
+    }
+    .leftWrap{
+        gap:240px;
+    }
+}
+@media(max-width:768px){
+    .contactWrap{
+        flex-direction:column;
+        gap:50px;
+    }
+    .leftWrap{
+        gap:50px;
+    }
+    .contactSec{
+        padding:140px 0 100px;
+    }
+  
+}

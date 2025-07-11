@@ -5,34 +5,6 @@
     overflow: hidden;
     height: 100vh;
   }
-    
-  .shape {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    mix-blend-mode: multiply;
-    background: black;
-    position: relative;
-  }
-  
-@keyframes colorShift {
-    0% {
-      background-color: #ff0000; /* Red */
-    }
-    25% {
-      background-color: #00ff00; /* Green */
-    }
-    50% {
-      background-color: #0000ff; /* Blue */
-    }
-    75% {
-      background-color: #ff00ff; /* Magenta */
-    }
-    100% {
-      background-color: #ffff00; /* Yellow */
-    }
-  }
   
   .text {
     display: flex;
@@ -45,24 +17,50 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: -10;
     pointer-events: none;
     background-color: var(--color-6);
   }
   
   .textInner {
-    transform: translateY(15vw);
+    /* transform: translateY(28vw); */
+    opacity: 0;
     color: rgb(6, 6, 6);
     text-align: center;
     width: 100%;
     max-width: 874px;
+    height: 100vh;
+    justify-content: center;
     
   }
-.starOne,.starTwo{
+
+  .textInner p{
+    max-width: 581px;
+    width: 100%;
+  }
+
+
+.starOne,.starTwo,.starThree,.starFour{
     position: absolute;
 }
 .starOne{
-    right: 0;
-    bottom: 0;
+  left: 0;
+  bottom: 10%;
+}
+.starFourV1{
+  display: block;
+}
+.starThree{
+  right: 0;
+  top: 30%;
+
+}
+.starTwo{
+  top: 20%;
+}
+.starFour{
+  bottom: 20%;
+right: 0;
 }
   .color2{
     color: var(--color-2);
@@ -80,7 +78,18 @@
     right: 0;
     bottom: 0;
   }
-
+  
+  .shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    mix-blend-mode: multiply;
+    background: black;
+    position: relative;
+    z-index: 2;
+  }
+  
   .shape video {
     position: absolute;
     top: 50%;
@@ -104,6 +113,37 @@
   }
   
   .img svg .hsc-img-path {
-    /* fill: white; */
+    fill: white;
   }
   
+
+  .overlayTextContainer{
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    align-items: center;
+  }
+  .overlayTextContainer h2{
+    width: 100%;
+    max-width: 888px;
+  }
+  .overlayText{
+
+  }
+  .textInnerContent{
+
+  }
+
+@media(max-width:768px){
+  .textInner{
+    width: 80%;
+  }
+  .overlayTextContainer h2{
+    width: 80%;
+    max-width: 100%;
+  }
+}

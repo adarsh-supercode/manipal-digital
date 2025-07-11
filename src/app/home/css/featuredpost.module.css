@@ -1,0 +1,159 @@
+.postContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.subPosts{
+
+}
+.mainPostContainer{
+   width: 100%;
+   max-width: 530px;
+}
+ .subPostContainer{
+    display: flex;
+    gap: 10px;
+    color:var(--color-4);
+ }
+ .subPostContainer img{
+    max-width: 410px;
+    width:100%;
+    object-fit:cover;
+ }
+ .featuredpostContent{
+    max-width:294px;
+    width:100%;
+ }
+ .featuredPostWrap{
+      display: flex;
+      gap: 20px;
+ }
+ @media(max-width:1400px){
+   .featuredPostMain{
+      width: auto;
+   }
+   .featuredPostWrap{
+      width: 90%;
+   }
+ }
+
+
+ @media(max-width:1200px){
+   .featuredPostWrap{
+      display: flex;
+      overflow: scroll;
+      scrollbar-width: none; 
+      -ms-overflow-style: none; 
+      gap:12px;
+     
+   }
+  
+   .featuredPostMain img{
+      width:100%;
+   }
+   .subPostWrap{
+      display: flex !important;
+      flex-direction: row !important;
+   }
+   .subPostContainer{
+      flex-direction: column;
+      max-width:363px;
+      width:100%;
+   }
+   .subPostContainer img{
+      width: 363px;
+      height: 370px;
+   }
+   .featuredfirstPostImage{
+      width: 363px;
+      height: 370px;
+   }
+   .viewBtn{
+      padding-top:50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+   .viewBtn{
+      display:none;
+   }
+ }
+ @media(max-width:1024px){
+   .featuredPostWrap{
+      display: flex;
+      overflow: scroll;
+      scrollbar-width: none; 
+      -ms-overflow-style: none; 
+      gap:12px;
+      width: 100%;
+     
+   }
+   .subPostWrap{
+      display: flex !important;
+      flex-direction: row !important;
+   }
+   .featuredPostMain {
+      max-width:363px;
+      width:100%;
+   }
+   .featuredPostMain {
+      width: 363px !important;
+   }
+   .subPostContainer{
+      flex-direction: column;
+      max-width:363px;
+      width:100%;
+   }
+   .subPostContainer img{
+      width: 363px;
+      height: 370px;
+   }
+   .featuredfirstPostImage{
+      width: 363px !important;
+      height: 370px;
+   }
+   .viewBtn{
+      padding-top:50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+ }
+ @media(max-width:991px){
+
+ }
+ @media(max-width:768px){
+   .featuredPostWrap{
+      display: flex;
+      overflow: scroll;
+      scrollbar-width: none; 
+      -ms-overflow-style: none; 
+      gap:12px;
+     
+   }
+   .subPostWrap{
+      display: flex !important;
+      flex-direction: row !important;
+   }
+   .subPostContainer{
+      flex-direction: column;
+   }
+   .subPostContainer img{
+      width: 260px;
+      height: auto;
+   }
+   .featuredfirstPostImage{
+      width: 260px !important;
+      /* height: 180px !important; */
+   }
+   .viewBtn{
+      padding-top:50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+ }
+ @media(max-width:375px){
+   .viewBtn{
+      padding-top:12px;
+   }
+ }

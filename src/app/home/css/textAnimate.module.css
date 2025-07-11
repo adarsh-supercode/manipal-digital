@@ -1,4 +1,35 @@
 .textWrap{
-    /* max-width: 649px; */
     width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.modelWrapper{
+    position: relative;
+}
+  
+.model {
+    height: 100%;
+}
+.animateTextWrap{
+    position:relative;
+    z-index:999999999;
+}
+
+@media(max-width:991px){
+    .animateTextWrap{
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: flex-end !important;
+    }
+    .textWrap{
+        max-width:500px;
+        width: 100%;
+    }
+  
+}
+@media(max-width:768px){
+    .animateTextWrap{
+    align-items: flex-start !important;
+    }
 }
