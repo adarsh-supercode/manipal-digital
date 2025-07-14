@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
@@ -16,32 +16,35 @@ export default function Slider({offer}) {
 
   // Swiper instance hack to register custom nav refs properly
   const swiperRef = useRef(null)
-
+  const [playingIndex, setPlayingIndex] = useState(null)
   const audioRefs = useRef([]);
 
-  // Stop all audios before playing new one
-  const handlePlayAudio = (index) => {
-  audioRefs.current.forEach((audio, i) => {
-    if (!audio) return;
+const handlePlayAudio = (index) => {
+  const swiper = swiperRef.current;
 
-    if (i !== index) {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-  });
+  if (playingIndex === index) {
+    audioRefs.current[index].pause();
+    setPlayingIndex(null);
 
-  const currentAudio = audioRefs.current[index];
+    // Resume Swiper autoplay when audio stops
+    swiper?.autoplay?.start();
+  } else {
+    audioRefs.current.forEach((audio, i) => {
+      if (audio) {
+        if (i === index) {
+          audio.play();
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      }
+    });
+    setPlayingIndex(index);
 
-  if (currentAudio) {
-    if (currentAudio.paused) {
-      currentAudio.play();
-    } else {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
+    // Stop Swiper autoplay when audio plays
+    swiper?.autoplay?.stop();
   }
 };
-
 
   useEffect(() => {
     if (
@@ -111,13 +114,20 @@ export default function Slider({offer}) {
           <SwiperSlide key={index}>
             <div className={styles.slideContent}
                 onClick={() => handlePlayAudio(index)}
-                data-cursor="audioPlay"
                 >
               <img
                 src={slide.image.url}
                 alt={slide.heading}
                 className={styles.slideImage}
               />
+            {/* Play/Pause Overlay */}
+            <div className={styles.playPauseButton}>
+              {playingIndex === index ? (
+                <img src="/assets/pause.svg" alt="Pause"/>
+              ) : (
+                <img src="/assets/play.svg" alt="Play"/>
+              )}
+            </div>
               <div className={styles.slideTextContainer}>
                 <h2 className={`${styles.slideHeading} heading-4 heading-5-md heading-4-sm color-13`}>
                   {slide.heading}

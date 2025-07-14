@@ -107,17 +107,16 @@ right: 11rem;
   color: #ffffff;
   transition: transform 0.4s ease;
 }
-
-.arrowButton.arrowRight {
+.arrowButton:hover {
   width: 100px;
   border-radius: 40px;
   padding-left: 25px;
 }
 
-.arrowRight .arrow {
+
+.arrowButton:hover .arrow {
   transform: translateX(-10px);
 }
-
 
 .sliderHeaderContent{
   position: relative;
@@ -154,6 +153,9 @@ right: 11rem;
     padding-left: 20px;
         height: 100vh; 
   }
+  .playPauseButton{
+    top:40% !important;
+  }
   .slideImage{
     height: 350px;
     object-fit: cover;
@@ -169,4 +171,13 @@ right: 11rem;
     bottom: 2rem;
     right: 3.3rem;
   }
+}
+
+
+
+.playPauseButton{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
