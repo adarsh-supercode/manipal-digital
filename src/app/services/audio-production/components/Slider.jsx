@@ -18,6 +18,7 @@ export default function Slider({offer}) {
   const swiperRef = useRef(null)
   const [playingIndex, setPlayingIndex] = useState(null)
   const audioRefs = useRef([]);
+  const [isRightHovered, setIsRightHovered] = useState(false);
 
 const handlePlayAudio = (index) => {
   const swiper = swiperRef.current;
@@ -121,13 +122,15 @@ const handlePlayAudio = (index) => {
                 className={styles.slideImage}
               />
             {/* Play/Pause Overlay */}
-            <div className={styles.playPauseButton}>
-              {playingIndex === index ? (
-                <img src="/assets/pause.svg" alt="Pause"/>
-              ) : (
-                <img src="/assets/play.svg" alt="Play"/>
-              )}
-            </div>
+            {slide.audio && (
+              <div className={styles.playPauseButton}>
+                {playingIndex === index ? (
+                  <img src="/assets/pause.svg" alt="Pause"/>
+                ) : (
+                  <img src="/assets/play.svg" alt="Play"/>
+                )}
+              </div>
+            )}
               <div className={styles.slideTextContainer}>
                 <h2 className={`${styles.slideHeading} heading-4 heading-5-md heading-4-sm color-13`}>
                   {slide.heading}
@@ -149,14 +152,17 @@ const handlePlayAudio = (index) => {
     </div>
             {/* Custom Navigation Arrows */}
               <div className={styles.arrowContainer}>
-                <div ref={prevRef} className={`${styles.arrowButton} ${styles.arrowLeft}`}>
+                <div ref={prevRef} className={`${styles.arrowButton} ${styles.arrowLeft}  ${isRightHovered ? styles.shiftLeft : ''}`}>
                   <span className={styles.arrow}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
                       <path d="M7.93 14.94L0.94 7.95M0.94 7.95L7.93 0.97M0.94 7.95H16.87" stroke="white" strokeWidth="0.71" />
                     </svg>
                   </span>
                 </div>
-                <div ref={nextRef} className={`${styles.arrowButton} ${styles.arrowRight} d-flex justify-content-end`}>
+                <div ref={nextRef} className={`${styles.arrowButton} ${styles.arrowRight} 
+                d-flex justify-content-end`}
+                    onMouseEnter={() => setIsRightHovered(true)}
+    onMouseLeave={() => setIsRightHovered(false)}>
                   <span className={styles.arrow}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
                       <path d="M9.44 14.94L16.43 7.95M16.43 7.95L9.44 0.97M16.43 7.95H0.51" stroke="white" strokeWidth="0.71" />
@@ -164,6 +170,25 @@ const handlePlayAudio = (index) => {
                   </span>
                 </div>
               </div>
+              {/* <div className={styles.arrowContainer}>
+                <div className={styles.arrowWrapper}>
+                  <div ref={prevRef} className={`${styles.arrowButton} ${styles.arrowLeft}`}>
+                    <span className={styles.arrow}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
+                          <path d="M7.93 14.94L0.94 7.95M0.94 7.95L7.93 0.97M0.94 7.95H16.87" stroke="white" strokeWidth="0.71" />
+                        </svg>
+                      </span>
+                  </div>
+                  <div ref={nextRef} className={`${styles.arrowButton} ${styles.arrowRight}`}>
+                    <span className={styles.arrow}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
+                        <path d="M9.44 14.94L16.43 7.95M16.43 7.95L9.44 0.97M16.43 7.95H0.51" stroke="white" strokeWidth="0.71" />
+                      </svg>
+                    </span>   
+                    </div>
+                </div>
+              </div> */}
+
               </>
   )
 }

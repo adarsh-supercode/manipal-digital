@@ -4,8 +4,8 @@
   transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
-  /* max-width: 1512px;
-  width: 90%; */
+  max-width: 900px;
+  width: 90%;
   top:80px;
   background-color: var(--color-4);
   outline: .5px solid #eff0f4;
@@ -14,10 +14,11 @@
 
 .menu {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     background-color: var(--color-4);
     margin: 48px 0;
     padding:0 48px;
+    gap: 20px;
   }
   .bgColor4{
     background-color: var(--color-4);
@@ -28,21 +29,21 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     width: 100%;
-    max-width: 376px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding-left: 24px;
     color: var(--color-10);
   }
-  .menuItem:nth-child(1),  .menuItem:nth-child(3) {
+  /* .menuItem:nth-child(1),  .menuItem:nth-child(3),.menuItem:nth-child(5) {
     border-left: none;
     padding-left: 0;
     padding-right: 24px;
   }
-  .menuItem:nth-child(3),  .menuItem:nth-child(4) {
+  .menuItem:nth-child(3),  .menuItem:nth-child(4) ,  .menuItem:nth-child(5){
     padding-top: 24px;
-  }
+  } */
   
   .imageContainer {
 

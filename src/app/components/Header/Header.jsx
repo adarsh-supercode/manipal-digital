@@ -20,6 +20,75 @@ export default function Header({ generalSettings }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const pathname = usePathname();
+const headerData1 = [
+  {
+    menu: {
+      title: "About",
+      url: "/about",
+      target: ""
+    },
+    sub_menu: false,
+    submenu: false
+  },
+  {
+    menu: {
+      title: "Industries",
+      url: "/industries",
+      target: ""
+    },
+    sub_menu: false,
+    submenu: false
+  },
+  {
+    menu: {
+      title: "Services",
+      url: "/",
+      target: ""
+    },
+    sub_menu: [
+      {
+        title: "Packaging",
+        description: "Innovative packaging that enhances your brand’s presence.",
+        image: "https://backend.manipal.digital/wp-content/uploads/featured-img.jpg",
+        link: "/services/packaging"
+      },
+      {
+        title: "CGI",
+        description: "Photorealistic 3D renders for impactful storytelling.",
+        image: "https://backend.manipal.digital/wp-content/uploads/packing-1.webp",
+        link: "/services/cgi"
+      },
+      {
+        title: "AudioVisual",
+        description: "Engaging sound and visuals that elevate your brand.",
+        image: "https://backend.manipal.digital/wp-content/uploads/av-submenu.png",
+        link: "/services/audiovisual"
+      },
+      {
+        title: "Image Production",
+        description: "High-quality visuals tailored to your marketing strategy.",
+        image: "https://backend.manipal.digital/wp-content/uploads/beverage.webp",
+        link: "/services/image-production"
+      },
+      {
+        title: " Production",
+        description: "High-quality visuals tailored to your marketing strategy.",
+        image: "https://backend.manipal.digital/wp-content/uploads/beverage.webp",
+        link: "/services/image-production"
+      }
+    ],
+    submenu: true
+  },
+  {
+    menu: {
+      title: "Portfolio",
+      url: "/our-portfolio",
+      target: ""
+    },
+    sub_menu: false,
+    submenu: false
+  }
+];
 
   // Detect viewport width and handle mobile view state
   const handleResize = () => {
@@ -66,10 +135,12 @@ export default function Header({ generalSettings }) {
     pathname !== '/services/imaging/' &&
     pathname !== '/services/audiovisual/' &&
     pathname !== '/services/packaging/' &&
-    pathname !== '/services/cgi/';
+    pathname !== '/services/cgi/'&&
+    pathname !== '/services/audio-production/';
 
   const logoWhite =
     pathname === '/services/audiovisual/' ||
+    pathname === '/services/audio-production/' ||
     pathname === '/about/' ||
     pathname === '/services/packaging/' ||
     pathname === '/services/imaging/' ||
@@ -82,7 +153,7 @@ export default function Header({ generalSettings }) {
       <nav
         className={`${styles.headerNav}
           ${openDropdown !== null ? styles.headerActive : ''}
-          ${scrollingDown ? styles.headerHidden : headerActive ? styles.headerActive : ''}
+          ${scrollingDown ? styles.headerActive : headerActive ? styles.headerActive : ''}
           ${isNotHomeOrAbout ? styles.commonHeader : ''}
           ${logoWhite ? styles.logoWhite : ''}
           ${menuOpen ? styles.menuOpen : ''}
@@ -158,7 +229,7 @@ export default function Header({ generalSettings }) {
         {openDropdown !== null && !isMobileView && (
           <div className={styles?.desktopSubMenu}>
             <MegaMenu
-              items={headerData?.menu[openDropdown]?.sub_menu}
+              items={headerData1?.[openDropdown]?.sub_menu}
               onClose={() => setOpenDropdown(null)}
               isMobileMenuOpen={isMobileMenuOpen}
               className={`${styles.megaMenu} ${openDropdown !== null ? styles.megaMenuOpen : ''}`}

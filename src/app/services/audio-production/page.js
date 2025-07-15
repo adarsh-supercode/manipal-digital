@@ -1,10 +1,10 @@
 import React from 'react'
-import AudioVisualsmain from './components/AudioVisualsmain'
+import AudioProduction from './components/AudioProduction'
 import { generateSEO } from '@/utilities/helper'
 
 export async function generateMetadata() {
   const res = await fetch(
-    `${process.env.SERVER_PAGE_URL}157?acf_format=standard`
+    `${process.env.SERVER_PAGE_URL}1077?acf_format=standard`
     , {
       next: { revalidate: 60 },
     });
@@ -29,7 +29,7 @@ export default async function page() {
  
    try {
       const response = await fetch(
-        `${process.env.SERVER_PAGE_URL}157?acf_format=standard`,
+        `${process.env.SERVER_PAGE_URL}1077?acf_format=standard`,
         {
           next: { revalidate: 60 },
         }
@@ -41,7 +41,7 @@ export default async function page() {
   
       const data = await response.json();
       return (
-          <AudioVisualsmain data={data?.acf} />
+          <AudioProduction data={data?.acf} />
       );
     } catch (error) {
       console.error('Fetch error:', error);

@@ -18,8 +18,8 @@ export default function MegaMenu({ items, onClose,isMobileMenuOpen }) {
         <div className={styles.menu}>
           {items.map((item, index) => (
             <Link key={index} href={item.link}  className={styles.menuItem}   onMouseEnter={() => setActiveImage(item.image)} onClick={onClose}  data-cursor="bigCursor">
-              <h3 className="text-1 text-2-sm">{item.title}</h3>
-              <p className="text-4 opacity-06">{item.description}</p>
+              <h3 className="text-3 text-2-sm">{item.title}</h3>
+              <p className="text-6 opacity-06">{item.description}</p>
             </Link>
           ))}
         </div>

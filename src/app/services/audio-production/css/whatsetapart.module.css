@@ -1,0 +1,75 @@
+.WhatsetWrap{
+    background-color:var(--color-6)
+}
+.textWrapTitle{
+    max-width:490px;
+    width:100%;
+}
+.textWrap{
+    /* padding-top:100px; */
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    color:var(--color-3);
+}
+.impactCardWrap{
+    padding-top:84px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    column-gap:20px;
+}
+.impactCard{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+.impactDesc{
+    max-width:268px;
+    width:100%;
+}
+.impactCardContent{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    color:var(--color-3)
+}
+.advantageContent{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+}
+.textWrapDesc{
+    max-width: 600px;
+    width:100%;
+}
+@media(max-width:1024px){
+    .impactCardWrap{
+        padding-top:55px;
+        grid-template-columns:repeat(2,1fr);
+        row-gap:40px;
+    }
+    .textWrap{
+        padding-top:0px;
+    }
+    .advantageContent{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+@media(max-width:768px){
+    .advantageContent{
+        flex-direction:column;
+    }
+    .impactDesc{
+        max-width:100%;
+    }
+}
+@media(max-width:475px){
+    .impactCardWrap{
+        grid-template-columns:1fr;
+ 
+    }
+}
