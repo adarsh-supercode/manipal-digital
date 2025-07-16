@@ -71,10 +71,10 @@ const headerData1 = [
         link: "/services/image-production"
       },
       {
-        title: "Audio Production",
+        title: " Production",
         description: "High-quality visuals tailored to your marketing strategy.",
         image: "https://backend.manipal.digital/wp-content/uploads/beverage.webp",
-        link: "/services/audio-production"
+        link: "/services/image-production"
       }
     ],
     submenu: true
@@ -153,7 +153,7 @@ const headerData1 = [
       <nav
         className={`${styles.headerNav}
           ${openDropdown !== null ? styles.headerActive : ''}
-          ${scrollingDown ? styles.headerActive : headerActive ? styles.headerActive : ''}
+          ${scrollingDown ? styles.headerHidden : headerActive ? styles.headerActive : ''}
           ${isNotHomeOrAbout ? styles.commonHeader : ''}
           ${logoWhite ? styles.logoWhite : ''}
           ${menuOpen ? styles.menuOpen : ''}
