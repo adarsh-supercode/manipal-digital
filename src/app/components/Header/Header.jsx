@@ -71,7 +71,7 @@ const headerData1 = [
         link: "/services/image-production"
       },
       {
-        title: " Production",
+        title: "Audio Production",
         description: "High-quality visuals tailored to your marketing strategy.",
         image: "https://backend.manipal.digital/wp-content/uploads/beverage.webp",
         link: "/services/image-production"
