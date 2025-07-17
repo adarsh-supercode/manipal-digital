@@ -30,9 +30,7 @@ export default async function page() {
    try {
       const response = await fetch(
         `${process.env.SERVER_PAGE_URL}1077?acf_format=standard`,
-        {
-          next: { revalidate: 60 },
-        }
+  { cache: 'no-store' } 
       );
   
       if (!response.ok) {

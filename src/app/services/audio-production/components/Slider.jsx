@@ -73,7 +73,7 @@ const handlePlayAudio = (index) => {
         loop
         className={styles.backgroundVideo}
       ></video>
-
+<div className={styles.videoOverlay}></div>
       <div className={styles.videoOverlay} />
       <div className={styles.sliderHeaderContent}>
         <p className='color-13 text-6 text-6-md text-5-sm uppercase'>{title}</p>
