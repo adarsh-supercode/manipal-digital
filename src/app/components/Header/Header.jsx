@@ -72,7 +72,7 @@ const headerData1 = [
       },
       {
         title: "Audio Production",
-        description: "High-quality visuals tailored to your marketing strategy.",
+        description: "Professional audio production engineered to amplify your brand messaging.",
         image: "https://backend.manipal.digital/wp-content/uploads/beverage.webp",
         link: "/services/image-production"
       }
