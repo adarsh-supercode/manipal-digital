@@ -22,7 +22,6 @@ export default function ModelBanner() {
         <directionalLight position={[5, 5, 5]} intensity={0.8} castShadow />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
         <pointLight position={[-10, -10, -10]} intensity={0.5} />
-        {/* <primitive object={new AxesHelper(5)} /> */}
         <Suspense fallback={null}>
           <Model  />
           <Environment preset="city" background={false} />
