@@ -66,10 +66,10 @@ async function getPortfolioBySlug(slug) {
 
 // Generate SEO Metadata
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const portfolio = await getPortfolioBySlug(slug);
-  console.log('portfolio: ', portfolio.title);
+  console.log('portfolio: ', portfolio?.title);
 
   if (!portfolio) {
     return {
@@ -83,13 +83,20 @@ export async function generateMetadata({ params }) {
   return {
     title: `${decodedTitle} - Manipal Digital`,
     description: portfolio.description || "Explore the portfolio of Manipal Digital.",
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/our-portfolio/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
 
 // Detail Component
 export default async function Detail({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const portfolio = await getPortfolioBySlug(slug);
   const allPosts = await getAllOurWorkPostsWithTerms();

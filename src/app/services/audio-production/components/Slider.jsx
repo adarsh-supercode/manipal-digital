@@ -162,7 +162,7 @@ const handlePlayAudio = (index) => {
                 <div ref={nextRef} className={`${styles.arrowButton} ${styles.arrowRight} 
                 d-flex justify-content-end`}
                     onMouseEnter={() => setIsRightHovered(true)}
-    onMouseLeave={() => setIsRightHovered(false)}>
+                    onMouseLeave={() => setIsRightHovered(false)}>
                   <span className={styles.arrow}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
                       <path d="M9.44 14.94L16.43 7.95M16.43 7.95L9.44 0.97M16.43 7.95H0.51" stroke="white" strokeWidth="0.71" />
@@ -170,25 +170,6 @@ const handlePlayAudio = (index) => {
                   </span>
                 </div>
               </div>
-              {/* <div className={styles.arrowContainer}>
-                <div className={styles.arrowWrapper}>
-                  <div ref={prevRef} className={`${styles.arrowButton} ${styles.arrowLeft}`}>
-                    <span className={styles.arrow}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
-                          <path d="M7.93 14.94L0.94 7.95M0.94 7.95L7.93 0.97M0.94 7.95H16.87" stroke="white" strokeWidth="0.71" />
-                        </svg>
-                      </span>
-                  </div>
-                  <div ref={nextRef} className={`${styles.arrowButton} ${styles.arrowRight}`}>
-                    <span className={styles.arrow}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
-                        <path d="M9.44 14.94L16.43 7.95M16.43 7.95L9.44 0.97M16.43 7.95H0.51" stroke="white" strokeWidth="0.71" />
-                      </svg>
-                    </span>   
-                    </div>
-                </div>
-              </div> */}
-
               </>
   )
 }

@@ -140,7 +140,7 @@ export default function WhatWeOffer({services}) {
                 <GlassModel />
               </Center>
             </RotatingGroup>
-            <Environment preset="studio" />
+            <Environment files="/assets/reflection.jpg" />
             {!isMobile && <OrbitControls enableZoom={false} enableRotate={false} />}
           </Canvas>
         </div>

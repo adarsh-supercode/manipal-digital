@@ -10,7 +10,6 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Link from 'next/link';
 
 export default function BlogInnerpage({ blog , allPosts = [],industryTag}) {
-
   const { industryTerms = [], serviceTerms = [] } = blog || {};
   const author = blog.acf?.author;
   const readTime = blog.acf?.read_time;
@@ -147,9 +146,9 @@ export default function BlogInnerpage({ blog , allPosts = [],industryTag}) {
                             {/* <div className={`${styles.tag} ${styles.industryTag} text-7 uppercase`}>
                               {post.industryTerms?.map((term) => term.name).join(', ')}
                             </div> */}
-                            {post.serviceTerms?.length > 0 && (
+                            {post.serve?.length > 0 && (
                             <div className={`${styles.tag} ${styles.serviceTag} text-7 text-6-sm uppercase`}>
-                              {post.serviceTerms?.map((term) => term.name).join(', ')}
+                              {post.serve_terms_full.map(term => term.name).join(', ')}
                             </div>
                             )}
                           </div>

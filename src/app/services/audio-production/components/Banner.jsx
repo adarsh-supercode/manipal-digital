@@ -26,10 +26,6 @@ export default function Banner({banner , overview}) {
             </section>
             <section className={`${styles?.textWrap} vertical-padding-lg`}>
                 <div className='container'>
-                    {/* <AnimatedText
-                        text={`<p>Omnichannel marketing requires many different elements to work in harmony and that's where our video and animation department comes in.</p>`}
-                        className={`${styles?.textAnimation} heading-3 heading-4-md`}
-                    /> */}
                     <div className={styles?.IntroContent}>
                         <h2 className={`${styles?.introHeading} heading-3 heading-4-md heading-4-sm`}>{Subheading}</h2>
                         <p className={`${styles?.introDesc} text-1 text-1-md text-2-sm`}>{description}</p>

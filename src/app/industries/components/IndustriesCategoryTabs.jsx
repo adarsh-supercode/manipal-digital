@@ -15,7 +15,7 @@ const IndustriesCategoryTabs = ({industries}) => {
     <div className="container">
       <div className={styles.tabsWrapper}>
         <button 
-          onClick={() => scrollToSection('media')} 
+          onClick={() => scrollToSection('media-entertainment')} 
           className={`${styles.tab} ${styles.mediaTab}`}
           style={{ backgroundImage: `url(${types[0].bgImg.link})` }}
         >
@@ -31,7 +31,7 @@ const IndustriesCategoryTabs = ({industries}) => {
           <span className={styles.tabText}>{types[1].heading}</span>
         </button>
         <button 
-          onClick={() => scrollToSection('fmcg')} 
+          onClick={() => scrollToSection('fmcg-beverages')} 
           className={`${styles.tab} ${styles.fmcgTab}`}
            style={{ backgroundImage: `url(${types[2].bgImg.link})` }}
         >

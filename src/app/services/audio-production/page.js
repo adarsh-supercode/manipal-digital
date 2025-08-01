@@ -13,13 +13,16 @@ export async function generateMetadata() {
     const data = await res.json();
     const seoData = data?.yoast_head_json || null;
 
-    return generateSEO({
-      seo: seoData,
-      defaultSEO: {
-        title: "CGI Services",
-        description: "Explore our CGI services and offerings.",
-      },
-    });
+    return {
+      ...(generateSEO({
+        seo: seoData,
+        defaultSEO: {
+          title: "CGI Services",
+          description: "Explore our CGI services and offerings.",
+        },
+      })),
+      robots: 'noindex, nofollow',
+    };
   } else {
     return {};
   }

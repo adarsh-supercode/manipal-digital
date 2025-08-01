@@ -40,7 +40,7 @@ async function getblogBySlug(slug) {
 
 // Generate SEO Metadata
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const blog = await getblogBySlug(slug);
 
@@ -56,6 +56,13 @@ export async function generateMetadata({ params }) {
   return {
     title: `${decodedTitle} - Manipal Digital`,
     description: blog.description || "Explore the blog of Manipal Digital.",
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
