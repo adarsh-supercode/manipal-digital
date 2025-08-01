@@ -13,9 +13,9 @@ export default function CgimainPage({data}) {
     <>
       {/* <Banner banner={banner}/> */}
       <ModelBanner/>
-      {/* <WhyShoot  overview={overview}/>
+      <WhyShoot  overview={overview}/>
       <WhatweOffer services={services} />
-      <Whatsets advantage={advantage}/> */}
+      <Whatsets advantage={advantage}/>
     </>
   );
 }
