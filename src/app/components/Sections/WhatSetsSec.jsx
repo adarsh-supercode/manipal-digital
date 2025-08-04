@@ -5,10 +5,12 @@ import Image from "next/image";
 import { HelmetModel as Model } from "../Models/HelmetModel";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
+import { useInView } from 'react-intersection-observer';
 
 const WhatsetsSection = ({video, data ,Bgclrpink,arCardShow,ModelComponent,showRotaion,NoneBgclr}) => {
   const [showCard, setShowCard] = useState(false);
   const sectionRef = useRef(null); 
+  const { ref: canvasRef, inView } = useInView({ threshold: 0.1 });
   const toggleCard = () => {
     setShowCard(!showCard);
   };
@@ -92,8 +94,11 @@ useEffect(() => {
         </svg>
         </div>
         {ModelComponent && (
-          <div className={styles?.productCanvas}>
-            <Canvas style={{ pointerEvents: isMobile ? 'none' : 'auto' }}>
+          <div className={styles?.productCanvas} ref={canvasRef}>
+            <Canvas
+              style={{ pointerEvents: isMobile ? 'none' : 'auto' }}
+              frameloop={inView ? 'always' : 'never'}
+            >
               <ambientLight />
               {/* <axesHelper args={[5]} /> */}
               <directionalLight position={[0, 0, 5]} intensity={1} />
