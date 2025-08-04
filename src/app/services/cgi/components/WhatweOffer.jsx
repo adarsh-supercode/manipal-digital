@@ -9,6 +9,7 @@ import { Center, Environment, OrbitControls } from "@react-three/drei";
 import { GlassModel } from "@/app/components/Models/GlassModel";
 import { usePathname } from 'next/navigation';
 import { useMediaQuery } from 'usehooks-ts'; 
+import { useInView } from 'react-intersection-observer';
 import "swiper/css";
 import "swiper/css/pagination";
 import * as styles from "../css/whatoffers.module.css";
@@ -36,6 +37,7 @@ export default function WhatWeOffer({services}) {
   const modelRef = useRef();
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 1024px)');
+  const { ref: canvasRef, inView } = useInView({ threshold: 0.1 });
 
   useEffect(() => {
     if (isMobile) {
@@ -130,9 +132,10 @@ export default function WhatWeOffer({services}) {
         </div>
 
         <div className={styles.WhatweOfferCntWrap}>
-        <div className={styles.solutionsModel}>
+        <div className={styles.solutionsModel} ref={canvasRef}>
           <Canvas
             camera={{ fov: 55 }}
+            frameloop={inView ? "always" : "never"}
             className={`${styles.solutionsModelCanvas} ${isMobile ? styles.disablePointer : ""}`}
           >
             <RotatingGroup isMobile={isMobile} modelRef={modelRef}>

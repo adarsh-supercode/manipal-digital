@@ -5,7 +5,7 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 export function Model({ position = [0.10, -0.19, 0.33], rotation = [0, -1.5, 0], scale = 0.03 }) {
-  const { nodes, materials } = useGLTF('/assets/shoe-latest-transformed.glb')
+  const { nodes, materials } = useGLTF('/assets/shoe-latest.glb')
 
   useEffect(() => {
     Object.values(materials).forEach((material) => {
@@ -82,4 +82,4 @@ export function Model({ position = [0.10, -0.19, 0.33], rotation = [0, -1.5, 0],
   )
 }
 
-useGLTF.preload('/assets/shoe-latest-transformed.glb')
+useGLTF.preload('/assets/shoe-latest.glb')

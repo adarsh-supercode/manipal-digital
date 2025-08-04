@@ -21,7 +21,7 @@ export async function generateMetadata() {
           description: "Explore our CGI services and offerings.",
         },
       })),
-      robots: 'noindex, nofollow',
+      robots: 'index, follow',
     };
   } else {
     return {};
