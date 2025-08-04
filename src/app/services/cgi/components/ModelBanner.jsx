@@ -62,7 +62,7 @@ export default function ModelBanner() {
               <div
               >
                 <img
-                  src="/assets/fallback.jpg"
+                  src="/assets/fallback.webp"
                   alt="Loading preview"
                   style={{
                     width: '100%',
