@@ -49,7 +49,8 @@ export default function ModelBanner() {
 <div ref={ref} style={{ 
   width: '100%', 
   height: '100vh', 
-  background: 'linear-gradient(280deg, #9FA0F1 -7.29%, #F9C1D4 29.21%, #C7CBFA 65.69%, #D79EE3 92.15%)' 
+  background: 'linear-gradient(280deg, #9FA0F1 -7.29%, #F9C1D4 29.21%, #C7CBFA 65.69%, #D79EE3 92.15%)' ,
+  cursor: inView ? 'grab' : 'default',
 }}>      <Leva collapsed={false} />
       <Canvas camera={{ position: [0, 0, 2], fov: 20 }} frameloop={inView ? 'always' : 'never'}>
         <ambientLight intensity={0.3} />
@@ -76,7 +77,7 @@ export default function ModelBanner() {
           }
         >
           <AnimatedModel onLoaded={() => setIsModelLoaded(true)} />
-          <Environment preset="city" background={false} />
+          <Environment preset="warehouse" background={false} />
         </Suspense>
         <OrbitControls
           ref={controlsRef}
