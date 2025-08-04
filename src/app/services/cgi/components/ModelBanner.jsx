@@ -77,7 +77,7 @@ export default function ModelBanner() {
           }
         >
           <AnimatedModel onLoaded={() => setIsModelLoaded(true)} />
-          <Environment preset="warehouse" background={false} />
+          <Environment preset="city" background={false} />
         </Suspense>
         <OrbitControls
           ref={controlsRef}
